@@ -1,0 +1,329 @@
+\documentclass{tufte-handout}
+
+%\geometry{showframe}% for debugging purposes -- displays the margins
+
+
+
+\newcommand{\bra}[1]{\left(#1\right)}
+\usepackage{clrscode3e}
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+\usepackage{tikz}
+\usepackage{amsmath,amsthm, amssymb}
+\usetikzlibrary{shapes}
+\usetikzlibrary{positioning}
+% Set up the images/graphics package
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{.}}
+
+\title{Lecture Notes for MAS 5145 - Fall 2025}
+\author[Nickolas Arustamyan]{Nickolas Arustamyan}
+\date{\today}  % if the \date{} command is left out, the current date will be used
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Small sections of multiple columns
+\usepackage{multicol}
+
+%--------Theorem Environments--------
+%theoremstyle{plain} --- default
+\newtheorem{thm}{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{quest}[thm]{Question}
+\newtheorem{claim}{Claim}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{jk}[thm]{Joke}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ans}[thm]{Answer}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\P}{\mathbb{P}}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\comp}{comp}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\reg}{Reg}
+\DeclareMathOperator{\odd}{Odd}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\sbd}{sbd}
+\DeclareMathOperator{\capac}{cap}
+
+
+% These commands are used to pretty-print LaTeX commands
+\newcommand{\doccmd}[1]{\texttt{\textbackslash#1}}% command name -- adds backslash automatically
+\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
+\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
+\newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command specification environment
+\newcommand{\docenv}[1]{\textsf{#1}}% environment name
+\newcommand{\docpkg}[1]{\texttt{#1}}% package name
+\newcommand{\doccls}[1]{\texttt{#1}}% document class name
+\newcommand{\docclsopt}[1]{\texttt{#1}}% document class option name
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\section{Review}
+\subsection{08/20/2024}
+\begin{defn}[Vector Spaces]
+A Vector Space is a nonempty set V with two operations, vector addition and scaler multiplication. These operations must satisfy a bunch of axioms, most important of which is $u,v \in V \implies u+v \in V$ and for $\alpha \in \F, \alpha v \in V$.
+\end{defn}
+
+\begin{defn}[Subspace]
+A Subspace W of a vector space V is a nonempty subset of V with the same operations as V. 
+\end{defn}
+\begin{prop}The intersection of any collection of subspaces $W_j$ of V is itself a subspace of V \end{prop}
+\begin{proof}
+ In order to be a subspace, we must prove that the intersection is nonempty and that it is closed under the operations of V. Clearly, since each $W_j$ is a subspace, they must each contain the zero element. Hence, the intersection must as well and hence, the intersection is nonempty. For any elements $u, v \in \bigcap W_j = W$, we know that a linear combination $\alpha u + \beta v \in W_j$ for each $W_j$ since they are each subspaces and hence closed under the vector operations. This means that $\alpha u + \beta v \in W$ and hence $W$ is a subspace.
+\end{proof}
+
+\begin{defn}[Direct Sum]
+Given two subspaces $W_1$ and $W_2$ of $V$, if $W_1\cap W_2 = \{0\}$, then $W_1+W_2$ is a direct sum of $W_1$ and $W_2$. For a collection of subspaces, we have a direct sum of $W_i \bigcap_{j \neq i} W_j = \{0\}$ 
+\end{defn}
+
+\subsection{08/22/2024}
+
+\begin{defn}[Linear Combination]
+Let $V$ be a vector space and $B = \{v_1, ..., v_k\} \subset V$. A linear combination of $B$ is a vector of the form $v = \sum c_iv_i (c_i \in \F) $. 
+\end{defn}
+
+\begin{defn}[Span]
+Let $S\subseteq V$. Then $span(S)$ is the set of all possible linear combinations of vectors in $S$.
+\end{defn}
+
+\begin{defn}[Spanning Set]
+$S \subseteq V$ is called a spanning set if $span(S) = V$. 
+\end{defn}
+
+\begin{defn}[Linear Independence and Dependence]
+$B\subset V$ is called linearly dependent if there exists $c_1, ..., c_n$ not all $0$ such that $\sum b_i c_i = 0$. Otherwise we say that $B$ is linearly independent.
+\end{defn}
+
+\begin{defn}[Basis]
+$S \subseteq V$ is called a basis of $V$ if it is linearly independent and spanning.
+\end{defn}
+
+\begin{thm}Every Vector Space has a basis \end{thm}
+\begin{proof}
+In the finite dimensional case, we know that $V = span(\{v_1, ..., v_n\})$ for some set $v_1,..., v_n$. If the spanning set is linearly independent, then we have a basis. Otherwise, remove linearly dependent vectors and recheck until we have a linearly independent set, which is thus a basis. In the infinite dimensional case, we must use Zorns Lemma but it is true that we can find the basis.
+\end{proof}
+
+\begin{exer}Every spanning set contains a basis\end{exer}
+\begin{proof}
+Let $B = \{v_1, ..., v_n\}$ such that $B$ is a spanning set. If $B$ is linearly independent, the basis is itself. Otherwise, there must be some vector $v_k$ that can be written as a linear combination of the other vectors. We can remove $v_k$ and recheck the new $B$ to see if it is linearly independent. This process must terminate and when it does, the final set will be linearly independent by construction. Hence, that final set will be a basis.
+\end{proof}
+
+
+\begin{exer}Every linearly independent set can be extended to a basis \end{exer}
+\begin{proof}
+Let $B = \{v_1, ..., v_n\}$ such that $B$ is linearly independent. If $span(B) = V$, then we have a basis. Otherwise, there must be some vector $v \in V$ such that $v \not\in span(B)$. Append $v$ to $B$ and recheck if it is a spanning set. If not, repeat the process until we have a spanning set. At that point we will have a basis.
+\end{proof}
+
+\begin{exer}
+Suppose $A = \{v_1, ... , v_k\}$ is linearly independent and $B = \{w_1, ... , w_m\}$ is a spanning set. Then $k \leq m$. 
+\end{exer}
+\begin{proof}
+We know that every linearly independent set can be extended to form a basis. This means that one can turn the LI set into one that also spans only by adding vectors to it. Similarly, every spanning set contains a basis implies that one can turn a spanning set into one that also is LI only by removing vectors from it. Together, these imply that the cardinality of any spanning set must be greater than or equal to that of any LI set. Hence, $k \leq m$.
+
+\end{proof}
+
+\begin{defn}[Dimension of a Vector Space]
+Let $S$ be a basis for a vector space $V$. Then $dim(V)$ is the cardinality of $S$.
+\end{defn}
+
+\begin{lem}
+Let $dim(V) = n < \infty$. Every $n$ LI vectors form a basis
+\end{lem}
+
+\begin{proof}
+Let $\{v_1, v_2, ..., v_n\}$ be a LI set. Then we can extend it to a basis $B = \{v_1, v_2, ..., v_n, u_1, ..., u_k\}$. But we know that the dimension of $V$ is $n$ and since $B$ is a basis of $V$, then $dim(V) = n+k$. Hence $n = n+k$ which implies $k = 0$ and the original set was a basis. 
+\end{proof}
+
+
+\begin{lem}Let $dim(V) = n < \infty$. Every $n$ spanning vectors form a basis\end{lem}
+\begin{proof}
+Let $\{v_1, v_2, ..., v_n\}$ be a spanning set. Then we can select vectors from it to form a basis $B = \{v_{i_1}, v_{i_2}, ..., v_{i_k} \}$. But we know that the dimension of $V$ is $n$ and since $B$ is a basis of $V$, then $dim(V) = k$. Hence $n = k$ which implies the original set was a basis. 
+
+\end{proof}
+
+If $B$ is a basis of $V$, then every vector in $V$ has a unique representation as a linear combination of vectors in $B$. 
+
+\subsection{08/27/2024}
+Let $W_1, W_2$ be subspaces of $V$. Then the following are equivilant 
+\begin{enumerate}
+\item $W_1 \oplus W_2$
+\item For all $v\in W_1 + W_2$ there exists unique $w_1 \in W_1, w_2 \in W_2$ such that $v = w_1 + w_2$
+\item $w_1 + w_2 = 0 \implies w_1 = w_2 = 0$
+\item The union of a basis for $W_1$ one for $W_2$ is basis of $W_1 + W_2$
+\end{enumerate}
+
+\begin{proof}
+The first three all follow from definition of the direct sum. The fourth equivilance can be seen by letting $A = \{u_1, u_2, ..., u_k\}$ be a basis for $W_1$ and $B = \{v_1, v_2, ..., v_n\}$ be a basis for $W_2$. Clearly, $span(A\cup B) = W_1+W_2$. Linear indepence can be seen since the two sets themselves are basis and hence linearly independent. Thus, we have a basis of $W_1 + W_2$. 
+\end{proof}
+
+\begin{lem}
+If $W$ is a subspace of $V$, then there exists a subspace $U$ of $V$ such that $V = U \oplus W$. $U$ is called a complement of $V$. 
+\end{lem}
+\begin{proof}
+Let $\{w_1, w_2, ..., w_k\}$ be a basis of $W$. Extend it to be a basis for $V, \{w_1, ..., w_k, u_1, ..., u_n\}$. Set $U = span(\{u_1, ..., u_n\})$. Thus, $V = U \oplus W$.
+\end{proof}
+
+\begin{thm}[Dimenion Formula for Subspaces]
+Let $W, U$ be finite dimensional subspaces of $V$. Then $dim(W+U) = dim(W) + dim(U) - dim(W \cap U)$.
+\end{thm}
+\begin{proof}
+Let $B_1 = \{v_1, ..., v_n\}$ be a basis for $W\cap U$. Then we can extend $B_1$ to form a basis of $W$ and get $B_2 = \{v_1, ..., v_n, w_1, ..., w_k\}$. Similarly, we can extend $B_1$ to form a basis for $U$ and get $B_3 = \{v_1, ..., v_n, u_1, ..., u_l\}$. Thus $dim(W) + dim(U) + dim(W \cap U) = n + k + n + l - n = n+k+l$. Now, we claim that $B = \{v_1, ..., v_n, w_1, ..., w_k, u_1, ..., u_l\}$ is a basis for $W+U$. Clearly, $span(B) = W+U$. To verify linear independence, we first set $\sum a_i v_i + \sum b_j w_j + \sum c_m u_m = 0$. This means that $-\sum a_i v_i = \sum b_j w_j + \sum c_m u_m$. Since the left hand side is in $W$ and the right hand side is in $U$, then they must  be in the intersction. This means that there are some $d_i \in \F$ such that $\sum d_i v_i = -\sum c_m u_m$. Since $B_1$ is a linearly independent set, this implies that $c_m = 0$. From this, it follows $a_i, b_j = 0$ and hence the set $B$ is linearly independent and a basis. Thus, $dim(W+U) = n+k+l$. 
+\end{proof} 
+
+\begin{defn}[Linear Transformation]
+Let $V, W$ be two vector spaces over $\F$. A map $\alpha: V \rightarrow W$ is linear if $\alpha(au+bv) = a\alpha(u) + b\alpha(v)$
+\end{defn}
+\begin{prop}
+If $\alpha$ is linear, then:
+\begin{itemize}
+\item $ker(\alpha) = \{ v\in V : \alpha(v) = 0\}$ is a subspace of $V$.
+\item $\alpha(0) = 0$
+\item $\im(\alpha) = \{\alpha(v) : v\in V  \}$ is a subspace of $W$.
+\end{itemize}
+\end{prop}
+
+\begin{proof}
+    NEED TO DO
+\end{proof}
+
+\begin{defn}[Injective or One-to-One]
+A linear transformation $\alpha$ is called injective or one to one if $\alpha(x) = \alpha(y) $ if and only if $x=y$
+\end{defn}
+\begin{exer}
+A linear transformation $\alpha$ is injective if and only if $ker(\alpha) = \{0\}$. 
+\end{exer}
+\begin{proof}
+Assume that $\alpha$ is injective. Now, suppose that $x \in ker(\alpha)$. This means that $\alpha(x) = 0$. But we know that $\alpha(0) = 0$. Since $\alpha$ is injective and $\alpha(x) = \alpha(0) = 0$, then $x = 0$. Hence $ker(\alpha) = \{0\}$. This has proved one direction. For the other direction, assume that $ker(\alpha) = \{0\}$. Now assume that $\alpha(x) = \alpha(y)$. This means that $\alpha(x) - \alpha(y) = 0$ and hence $x- y \in ker(\alpha)$. But this implies that $x=y$. Hence, when $\alpha(x) = \alpha(y)$, $x=y$. Thus, $\alpha$ is injective. 
+\end{proof}
+
+\begin{defn}[Surjective or onto]
+A linear transformation $\alpha$ is called surjective or onto if $im(\alpha) = W$.
+\end{defn}
+
+\begin{defn}[Bijective]
+A linear transformation $\alpha$ is called bijective it is both injective and surjective.
+\end{defn}
+
+\begin{prop}
+Let $\alpha: V \rightarrow W$ be linear:
+\begin{enumerate}
+\item $\alpha$ is injective if and only if $ker(\alpha) = 0$
+\item If $\alpha$ is bijective, $\alpha^{-1}$ is linear
+\item If $\alpha$ is injective and $S$ is LI, then $\alpha(S)$ is LI
+\item If $\alpha$ is surjective and $span(S) = V, span(\alpha(S)) = W$. 
+\item If $\alpha$ is bijective, $\alpha$ maps a basis of $V$ to a basis of $W$. 
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+    NEED TO DO
+\end{proof}
+
+\begin{prop}
+If $\alpha: V \rightarrow W$ and $\beta: W \rightarrow U$ are both linear, then so is $\beta\alpha$. 
+\end{prop}
+
+\begin{proof}
+    NEED TO DO
+\end{proof}
+
+\begin{exer}
+If $\alpha$ and $\beta$ are bijective, then $\beta\alpha$ is too and so is $(\beta\alpha)^{-1} = \alpha^{-1}\beta^{-1}$
+\end{exer}
+\begin{proof}
+    NEED TO DO
+\end{proof}
+\begin{defn}[Nullity]
+We define $nullity(\alpha) = dim(ker(\alpha))$.
+\end{defn}
+
+
+\begin{defn}[Rank]
+We define $rank(\alpha) = dim(im(\alpha))$.
+\end{defn}
+
+
+
+\begin{thm}[Dimension Formula for Linear Transformations]
+If $V$ and $W$ are finite dimensional vector spaces, then if $\alpha$ is linear, $dim(V) = rank(\alpha) + nullity(\alpha)$.
+\end{thm} 
+\begin{proof}
+Since $ker(\alpha)$ is a subspace, we know it must have a basis. Let $B = {v_1, v_2, ..., v_k}$ be a basis for $ker(\alpha)$. We know that the kernal is finite dimensional since it is a subspace of a finite dimensional space $V$. Now, extend $B$ to form a basis for $V$. Let $dim(V) = n$. Hence, we get $A = {v_1, ..., v_k, v_{k+1}, ..., v_n}$. Now, $im(\alpha) = span(\alpha(A)) = span(\alpha(v_1), ..., \alpha(v_k), \alpha(v_{k+1}), ..., \alpha(v_n)) = span(\alpha(v_{k+1}), ..., \alpha(v_n)) = span(A \setminus B)$. We now know that $A\setminus B = C$ is a spanning set of $im(\alpha)$. To see that $C$ is linearly independent, we set $\sum_{i=1}^{n-k} d_i\alpha(v_i) = 0$. Since $\alpha$ is linear, we can take out the transformation and get $\alpha(\sum_{i=1}^{n-k} d_iv_i) = 0$. But this means that $\sum_{i=1}^{n-k} d_iv_i \in ker(\alpha)$ which cannot be the case unless all $d_i = 0$. Hence, $C$ is linearly independent and thus a basis for $im(\alpha)$. Thus $rank(\alpha) + im(\alpha) = k + (n-k) = n = dim(V)$.
+\end{proof}
+
+\subsection{08/29/2024}
+
+\begin{lem}
+    Suppose $dim(V) = dim(W) = n < \infty$ and $T:V \rightarrow W$ is a linear map. Then $T$ is injective if and only if it is surjective.
+\end{lem}
+\begin{proof}
+    Assume that $T$ is injective. Then $ker(T) = \{0\}$ and hence $nullity(T) = 0$. Thus, by the Dimension Formula for Linear Transformations, we know that $rank(T) = dim(V) - nullity(T) = n-0=n$. Hence $rank(T) = n$ and thus, $T$ is surjective. Now, assume instead that $T$ is surjective. Similarly, we know that $nullity(T) = 0$ and thus, $T$ is injective. 
+\end{proof}
+
+\begin{thm}
+    Say $T:V \rightarrow W$ and $S:W \rightarrow Y$ with $T, S$ linear. Then 
+    \begin{enumerate}
+        \item $nullity(ST) \leq nullity(T) + nullity(S)$
+        \item $rank(T) + rank(S) - dim(W) \leq rank(ST) \leq  min(rank(S), rank(T))$
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    Since $ker(ST)$ is a subspace, we know it has a basis and hence, let $B = \{c_1, ..., c_g\}$ to be a basis for the kernal. This is the set of all vectors $c\in V$ such that $S(T(c)) = 0$. These specific $T(v)$ form a subset of $ker(S)$. Call that set $G$. Then $G \subseteq ker(S)$ and hence $ker(ST) \subseteq ker(S)$. This implies that $nullity(ST) \leq nullity(S) \leq nullity(S) + nullity(T)$.
+    \newline
+    To prove the second item, NEED TO DO
+\end{proof}
+
+\begin{defn}[Homomorphisms]
+    Let $V, W$ be two vector spaces. The set of all linear transformations from $V$ to $W$ is called $Hom(V,W)$ or $L(V, W)$. 
+\end{defn}
+
+\begin{prop}
+    $Hom(V, W)$ is a vector space.
+\end{prop}
+
+\begin{prop}
+    $dim(Hom(V, W)) = dim(V)\cdot dim(W)$.
+\end{prop}
+
+
+
+\end{document}

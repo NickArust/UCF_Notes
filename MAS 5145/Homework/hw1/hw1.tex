@@ -1,0 +1,52 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath, amsfonts, amsthm, amssymb,amsopn}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\newcommand{\myhwtype}{Homework}
+\newcommand{\myhwnum}{1}
+\newcommand{\myname}{Nickolas Arustamyan}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\firstpageheader{\myhwtype\; \myhwnum}{\myname}{MAA 5237}
+\runningheader{}{\myname}{}
+\firstpagefooter{\today}{}{\thepage\,/\,\numpages}
+\runningfooter{}{}{\thepage\,/\,\numpages}
+
+\begin{document}
+\begin{questions}
+\question Question 1\newline
+Since $f(au+bv) \geq min(f(u), f(v))$, we know that in particular, $f(0_V) = f(v-v) = f(1v+(-1)v) \geq min(f(v), f(v)) = f(v)$. Thus, $f(0_V) \geq f(v)$. Now, in order to check that $W$ is a subspace of $V$, we need to check first that it is nonempty. By definition, $0_V \in W$ and thus, $W$ is nonempty. Next, let $u,v \in W$. Then $f(c\cdot u+v) \geq min(f(u), f(v)) \geq h$. Hence, it is closed under addition and scaler multiplication. Thus, $W$ is a subspace of $V$.
+
+\question Question 2 \newline
+Let $W_1 \cup W_2$ be a subspace of $V$. In particular, this means for any $v \in W_1 \setminus W_2$ and $u \in W_2 \setminus W_1$, $v + u \in W_1 \cup W_2$. Hence, $v + u \in W_1$ or $W_2$. But we know that both $W_1$ and $W_2$ are closed under addition since they are both subspaces. Hence, this implies that either $u \in W_1$ or $v\in W_2$. Which is a contradiction. The only way to avoid this contradiction is if either $W_1 \subseteq W_2$ or vice versa. The other direction is trivial. 
+
+\question Question 3\newline
+Let $\{v_1, ..., v_k\}$ be a basis for $W$. Extend it to a basis of $V$ by $\{v_1, ..., v_k, u_1, ..., u_n\}$. Let $U = span(\{u_1, ..., u_n\})$. By construction, $U$ and $W$ don't intersect and $U$ is a subspace of $V$. Thus, we have a compliment of $W$.
+
+\question Question 4\newline 
+\begin{enumerate}
+    \item The dimension formula for subspaces states that $dim(W + U) = dim(W) + dim(U) - dim(W \cap U)$. Let $B_1 = \{v_1, ..., v_n\}$ be a basis for $W\cap U$. Then we can extend $B_1$ to form a basis of $W$ and get $B_2 = \{v_1, ..., v_n, w_1, ..., w_k\}$. Similarly, we can extend $B_1$ to form a basis for $U$ and get $B_3 = \{v_1, ..., v_n, u_1, ..., u_l\}$. Thus $dim(W) + dim(U) + dim(W \cap U) = n + k + n + l - n = n+k+l$. Now, we claim that $B = \{v_1, ..., v_n, w_1, ..., w_k, u_1, ..., u_l\}$ is a basis for $W+U$. Clearly, $span(B) = W+U$. To verify linear independence, we first set $\sum a_i v_i + \sum b_j w_j + \sum c_m u_m = 0$. This means that $-\sum a_i v_i = \sum b_j w_j + \sum c_m u_m$. Since the left hand side is in $W$ and the right hand side is in $U$, then they must  be in the intersction. This means that there are some $d_i \in \mathbb{F}$ such that $\sum d_i v_i = -\sum c_m u_m$. Since $B_1$ is a linearly independent set, this implies that $c_m = 0$. From this, it follows $a_i, b_j = 0$ and hence the set $B$ is linearly independent and a basis. Thus, $dim(W+U) = n+k+l$. 
+    
+    \item First, assume that $W_i$ are independent. This means that their sum is a direct sum. This means that $W_i \cap W_j = \{0\}$ for $i \neq j$. Thus, by the dimension formula for subspaces,  we know that $dim(\sum W_i) = \sum dim(W_i) - \sum_{i \neq j} dim(W_i \cap W_j)$. But since the intersections are trivial, we get $dim(\sum W_i) = \sum dim(W_i) $. Going the other way, we first assume that $dim(\sum W_i) = \sum dim(W_i) $. Using the dimension formula for subspaces, we know that $dim(\sum W_i) = \sum dim(W_i) - \sum_{i \neq j} dim(W_i \cap W_j)$. Hence, in this case, $\sum_{i \neq j} dim(W_i \cap W_j) = 0$. By definition, this means that $W_i$ are independent.
+    
+\end{enumerate}
+
+\question Question 5\newline
+\begin{enumerate}
+    \item A basis for $W$ would be $B = \{x, x^3\}$. Clearly the set is linearly independent. To see that it spans $W$, we note that any element $p \in W$ must be odd, by definition. Hence, we know that any $p$ must have the form $c_1x + c_2x^3$. Thus, clearly our set spans $W$. 
+    \item We can extend $B$ to $A = \{1, x, x^2, x^3, x^4\}$. This is the standard basis for $P_4$. 
+    \item We know that such a set $U$ must exist. It is clear that the basis for $U$ would be $\{1, x^2, x^4\}$. Thus, we define $U = span(\{1, x^2, x^4\})$. 
+\end{enumerate}
+\question Question 6\newline
+Clearly $W = \{w_1, ..., w_n\}$ is still a spanning set. To see that it is linearly independent, we must check that $\sum w_i c_i = 0$ if and only if $c_i = 0$. By definition, we know that $\sum c_i w_i = \sum_{i=1}^{n} c_i \sum_{j=1}^{i} v_i$. Thus, $\sum c_i w_i = (c_1 + ... + c_n) v_1 + (c_1 + ... + c_{n-1}) v_2 + ... + c_n v_n$. Since $\{v_1, ..., v_n\}$ is a basis for $V$, we know that it is linearly independent and hence $(c_1 + ... + c_n) v_1 + (c_1 + ... + c_{n-1}) v_2 + ... + c_n v_n = 0$ if and only if $c_i = 0$. Thus, $W$ is linearly independent and hence a basis. 
+
+\end{questions}
+\end{document}
