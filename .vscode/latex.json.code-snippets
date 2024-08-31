@@ -1,0 +1,37 @@
+{
+	"LaTeX Homework Template": {
+		"prefix": "hwtemplate",
+		"body": [
+		"\\documentclass[12pt]{exam}",
+		"\\usepackage{amsmath, amsfonts, amsthm, amssymb}",
+		"\\usepackage{enumerate}",
+		"\\usepackage{enumitem}",
+		"\\usepackage{graphicx}",
+		"\\usepackage{hyperref}",
+		"\\usepackage{float}",
+		"\\usepackage{pgfplots}",
+		"\\pgfplotsset{width=10cm,compat=1.9}",
+		"",
+		"\\newcommand{\\myhwtype}{Homework}",
+		"\\newcommand{\\myhwnum}{${1:1}}",  // Replace with default or dynamic value
+		"\\newcommand{\\myname}{${2:Nickolas Arustamyan}}",  // Replace with default or dynamic value
+		"",
+		"\\pagestyle{headandfoot}",
+		"\\firstpageheadrule",
+		"\\runningheadrule",
+		"\\firstpageheader{\\myhwtype\\; \\myhwnum}{\\myname}{${3:CLASS}}",  // Replace with default or dynamic value
+		"\\runningheader{}{\\myname}{}",
+		"\\firstpagefooter{${4:\\today}}{}{\\thepage\\,/\\,\\numpages}",  // Replace with default or dynamic value
+		"\\runningfooter{}{}{\\thepage\\,/\\,\\numpages}",
+		"",
+		"\\begin{document}",
+		"\\begin{questions}",
+		"\\question",
+		"${5:Insert your question here.}",  // Replace with default or dynamic value
+		"\\end{questions}",
+		"\\end{document}"
+		],
+		"description": "Template for Homework using LaTeX"
+	}
+	}
+	

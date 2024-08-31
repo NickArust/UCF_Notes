@@ -1,0 +1,56 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath, amsfonts, amsthm, amssymb,amsopn}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\newcommand{\myhwtype}{Homework}
+\newcommand{\myhwnum}{1}
+\newcommand{\myname}{Nickolas Arustamyan}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\firstpageheader{\myhwtype\; \myhwnum}{\myname}{MAA 5237}
+\runningheader{}{\myname}{}
+\firstpagefooter{\today}{}{\thepage\,/\,\numpages}
+\runningfooter{}{}{\thepage\,/\,\numpages}
+
+\begin{document}
+\begin{questions}
+\question Question 1.1.4\newline
+In order to check if $d(\cdot, \cdot)$ is a metric, we need to check that for $x,y \in \mathbb{R}^m$ \begin{enumerate}
+    \item $d(x,y) > 0$ if $x \neq y$ 
+    \item $d(x,x) = 0$
+    \item $d(x,y) = d(y,x)$
+    \item $d(x,y) \leq d(x,z) + d(z,y)$ for any $z\in \mathbb{R}^m$
+\end{enumerate}
+If $x\neq y$, then there must be at least one $i \in \{1,...,m\}$ such that $x_i \neq y_i$. This means that $d(x,y) \geq 1 > 0$. Hence, the first condition is satisfied. Similarly, since $x = x$, there is no index where $x_i \neq x_i$ and hence $d(x,x) = 0$. Thus, the second condition is satisfied. Looking at the definition of $d(\cdot, \cdot)$, we see that \[ d(x,y) = |\{k:x_k \neq y_k, k = 1,...,m\}| = |\{k:y_k \neq x_k, k = 1,...,m\}| = d(y,x)\] Hence the third condition is satisfied. If $z\neq x$ or $z\neq y$, then clearly $d(x,y) \leq d(x,z) + d(z,y)$. If $z=y$ or $z=x$, we would get equality. Now, let us define sets $A, B, C$ as follows:
+\[A = \{k : x_k \neq y_k\}\]
+\[B = \{k : x_k \neq z_k\}\]
+\[C = \{k : z_k \neq y_k\}\]
+For any $k\in A$, this means that $x_k \neq y_k$. This means that either $x_k = z_k$ but $z_k \neq y_k$ OR $x_k \neq z_k$. The first case implies that $k \in C$ and the second implies that $k\in B$. This means that any index $k\in A$ must also be in either $B$ or $C$. Thus, $A \subseteq B\cup C$. Hence, $d(x,y) = |A|\leq |B\cup C| \leq |B|+|C| = d(x,z) + d(z,y)$. Hence the final condition is satisfied. 
+
+\question Question 1.1.5\newline 
+In order to check if $d(\cdot, \cdot)$ is a metric, we need to check that for $x,y \in X$ \begin{enumerate}
+    \item $d(x,y) > 0$ if $x \neq y$ 
+    \item $d(x,x) = 0$
+    \item $d(x,y) = d(y,x)$
+    \item $d(x,y) \leq d(x,z) + d(z,y)$ for any $z\in X$
+\end{enumerate}
+Since $\hat{\rho}(x,y) = 0 \iff x = y$, then $d(x,x) = 0$. Hence the second condition is satisfied. Similarly, as $\hat{\rho}(x,y) \geq 0 $, then we know that $d(x,y) \geq 0$ as it is the maximum of two numbers greater than $0$. Hence the first conditin is met. Looking at the definition of $d(\cdot, \cdot)$, we see that \[d(x,y) = max\{\hat{\rho}(x,y), \hat{\rho}(y,x)\} = max\{\hat{\rho}(y,x), \hat{\rho}(x,y)\} = d(y,x)\] Hence the third condition is satisfied. Finally, we must use the fact that $\hat{\rho}(x,y) \leq \hat{\rho}(x,z)+ \hat{\rho}(z,y)$ and $\hat{\rho}(y,x) \leq \hat{\rho}(y,z)+ \hat{\rho}(z,x)$ and state that 
+\begin{align*}
+    d(x,y) &= \max\{\hat{\rho}(x,y), \hat{\rho}(y,x)\} \\
+    &\leq \max\{\hat{\rho}(x,z) + \hat{\rho}(z,y), \hat{\rho}(y,z) + \hat{\rho}(z,x)\} \\
+    &\leq \max\{\hat{\rho}(x,z), \hat{\rho}(z,x)\} + \max\{\hat{\rho}(y,z), \hat{\rho}(z,y)\} \\
+    &= d(x,z) + d(z,y)
+    \end{align*}
+    Hence, the final condition is satisfied. 
+\question Question 1.2.5\newline
+Since $x_n < y_n$ for all $n\geq 1$, we can state that $\{y_n\}$ is an upperbound of $\{x_n\}$. Hence, $\sup{(x_n)} \leq \sup{(y_n)}$. Thus $\limsup_{n\to \infty}(x_n) \leq$
+\end{questions}
+\end{document}
