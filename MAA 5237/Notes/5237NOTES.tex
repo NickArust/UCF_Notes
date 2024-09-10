@@ -1,0 +1,70 @@
+\documentclass{report}
+
+\input{/Users/Nick/Desktop/UCF/UCF_Notes/.vscode/preamble}
+\input{/Users/Nick/Desktop/UCF/UCF_Notes/.vscode/macros}
+\input{/Users/Nick/Desktop/UCF/UCF_Notes/.vscode/letterfonts}
+
+\title{MAA 5237 - Mathematical Analysis}
+\author{Nickolas Arustamyan}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{}
+\section{08/21/2024}
+\dfn{Metric Space}{A metric space is a nonempty set $X$ with a function $d: X \times X \rightarrow [0,\infty)$ such that d has the following properties:
+\begin{enumerate}
+    \item $d(x,y) = 0$ if and only if $x=y$
+    \item $d(x,y) = d(y,x)$
+    \item $d(x,y) + d(y,z) = d(x,z)$
+\end{enumerate}
+We call $d$ a metric and $(X,d)$ a matric space.
+}
+\qs{}{Is $\mathbb{R}^n$ with the Euclidean norm a metric space?}
+\begin{myproof}
+    YES! NEED TO do
+\end{myproof}
+
+\dfn{Convergent Sequence}{Let $(X,d)$ be a metric space and let $\{x_n\}$ be a sequence in $X$. We say $\lim_{n\rightarrow \infty}x_n = a$ if for all $\varepsilon > 0$, there exists an $N_\varepsilon$ such that $d(x_n,a)<\varepsilon$ for all $n > N_\varepsilon$.}
+
+\mprop{}{A sequence of vectors converges to $a$ if and only if it converges component wise.}
+
+\dfn{Neighborhood}{a neighborhood of $p\in X$ is a set that contains $B(p, \varepsilon) = \{x\in X : d(p,x)< \varepsilon\}$ for some $\varepsilon > 0$.}
+\dfn{Limit Point}{A point $p\in X$ is a limit point for a set if there exists a sequence $x_n$ such that $x_n \rightarrow p$ but $x_n \neq p$. }
+
+\dfn{Isolated Point}{A point $p\in X$ is called an isolated point if it is not a limit point.}
+
+\dfn{Closed Set}{A set $E \subseteq X$ is closed if it contains all of its limit points. Another definition would be that if $x_n \rightarrow x$ and $x_n \in E$, then $x \in E$.}
+
+\dfn{Interior Point}{A point $p \in E \subseteq X$ is an interior point of $E$ if there exists some positive $\varepsilon$ such that $B(p, \varepsilon) \subseteq E$. }
+\dfn{Open Set}{A set $E \subseteq X$ is open if all of its point are interior points. Another definition would be if $E^c$ is closed.}
+
+\dfn{Dense Sets}{A set $E \subseteq X$ is dense in $X$ if $\bar{E} = X$. Another definition would be if for any point $p \in X$, there is a sequence in $E$ such that $x_n \rightarrow p$. }
+
+
+\section{08/22/2024}
+\dfn{Convexity}{Let $\varphi: I \rightarrow \mathbb{R}$ for some interval $I$. We call $\varphi$ convex if \[\varphi (\lambda x_1 + (1-\lambda)x_2) \leq \lambda \varphi (x_1) + (1-\lambda)\varphi(x_2) \] for all $x_1, x_2 \in I$ and $\lambda \in [0,1]$. Thanks to this definition, we know that $\varphi$ is below any of its secant chords. One can easily extend this to the $n$-dimensional case using induction.}
+
+
+NEED TO ADD STUFF ABOUT JENSENS INEQUALITY, YONGS, AND HOLDERS
+
+\section{08/27/2024}
+\dfn{Cauchy Sequence}{A sequence $(x_n)$ is a Cauchy sequence if for all $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that $d(x_n, x_m)< \varepsilon$ for all $m,n > N$.}
+
+\mprop{Convergence implies Cauchy}{If $x_n$ is convergent, then it must be cauchy. The other direction is not always the case.}
+\pf{}{First, we will show that a cauchy sequence is not always convergent. Take $x_n$ to be a sequence such that $x_n \rightarrow \sqrt{2}$. This is a cauchy sequence in $\mathbb{Q}$ but not convergent in $\mathbb{Q}$ since $\sqrt{2} \not\in \mathbb{Q}$. Now, assume that $x_n$ is convergent to $a$. Then we know that for any $\varepsilon > 0$, there is an $N$ such that $d(x_n, a) < \varepsilon$ for all $n > N$. Take $m, k > N$. Then by the triangle inequality, we know $d(x_m, x_k) < d(x_m, a) + d(a, x_k) < \varepsilon + \varepsilon = 2\varepsilon$. Hence, it must be cauchy as well.}
+
+
+\dfn{Completeness}{A metric space $(X, d)$ is complete if every cauchy sequence converges.}
+
+\ex{}{Both $\mathbb{R}$ and $\mathbb{R}^n$ are complete.}
+\pf{}{NEED TO DO}
+
+\mprop{}{If $(X,d)$ is complete and $F\subseteq X$, then $F$ is complete if and only if it is closed. }
+\pf{}{NEED TO DO}
+
+
+
+\end{document}

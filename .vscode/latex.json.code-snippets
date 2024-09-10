@@ -32,6 +32,27 @@
 		"\\end{document}"
 		],
 		"description": "Template for Homework using LaTeX"
-	}
+	},
+
+	"LaTeX Notes Template": {
+		"prefix": "notes",
+		"body": [
+		  "\\documentclass{report}",
+		  "",
+		  "\\input{/Users/Nick/Desktop/UCF/UCF_Notes/.vscode/preamble}",
+		  "\\input{/Users/Nick/Desktop/UCF/UCF_Notes/.vscode/macros}",
+		  "\\input{/Users/Nick/Desktop/UCF/UCF_Notes/.vscode/letterfonts}",
+		  "",
+		  "\\title{${1:Title of Notes}}",  // Customizable title
+		  "\\author{${2:Nickolas Arustamyan}}",  // Your name can be prefilled
+		  "\\date{${3:\\today}}",  // Insert current date by default
+		  "",
+		  "\\begin{document}",
+		  "\\maketitle",
+		  "${4:Content here...}",  // Placeholder for your notes
+		  "\\end{document}"
+		],
+		"description": "Template for LaTeX Notes"
+	  }
 	}
 	
