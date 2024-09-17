@@ -24,8 +24,20 @@
 \begin{questions}
 \question Question 1
 \begin{parts}
-    \part a
+    \part At time $t=0$, we spend $\$100$ on $100$ shares, totalling $\$10,000$ flowing out. Since a call contract was sold with a $\$300$ premium, the total cash flow is $-\$10,000 + \$300 = -\$9,700$. Now, looking at the expiration date, $t = 6$ monthes, we must analyze the outcomes for different cases of the stock price. If the stock price is below the strike price, the option would expire worthless and the only money you recieve would be from the stock and the option premium. So the profit would be $(S_6 - \$100) \cdot 100 + \$300$. If the stock crashes and hits $\$0$, then the profit would be $-\$100\cdot 100 + \$300 = -\$9,700$. So the maximal loss would be $\$9,700$. Now, if the stock prices is above the strike price, then the profit for the stock would be $(S_6 - \$100) \cdot 100$. But since we sold a call, we would have to sell at the strike price of $\$105$. Thus the total stock profit would be $(\$105 - \$100) \cdot 100 = \$500$. Now, looking at the option, the higher the stock price, the greater the opportunity cost from the option. This is because you must sell the stocks lower than market value. However the actual cash flow impact is constant. Thus, the greatest profit comes if the stock price is greater than or equal to $\$105$. At that point, the total profit would be $\$300 + \$500 = \$800$.
+    \part If the stock price is below the strike price, then the option would not be excerised. Thus, the only way for it to be exercised is for the stock price to be greater than or equal to the strike price. Thus, as seen in part a, the profit would be $800$. 
 \end{parts}
-
+\question Question 2\newline
+Looking at the inequality, we see that the left side is higher than the right. This means that there is an arbitrage opportunity between the two sides. To exploit it, we 
+\begin{enumerate}
+    \item Sell the call
+    \item Buy the Put
+    \item Buy the stock
+    \item Borrow $KB(t,T)$, the (discounted) present value of the strike price, at a risk free rate
+\end{enumerate}
+To see why this is the case, we must examine what happens if the stock price is above the strike price and if it is lower. In the first case:\newline
+We have to deliver the stocks to the buyer of the call option at price $K$. This is no problem because we own the stock. The put option expires worthless. We would have to repay $K$, and can do so using the profits from selling the stock at $K$. Thus, because of the inequality, we are guarenteed to make money. 
+\newline
+On the other hand, if the stock is below the strike, then the calls expire worthless and we don't need to deliver them to the buyer of the call. We can exercise the puts and make money selling the stocks at above market rate, and then we once again repay the loan using the proceeds from the stock sale. Thus, again we are guarenteed to make money. Hence, this is an arbitrage.
 \end{questions}
 \end{document}
