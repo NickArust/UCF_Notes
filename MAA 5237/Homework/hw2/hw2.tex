@@ -1,0 +1,47 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\newcommand{\myhwtype}{Homework}
+\newcommand{\myhwnum}{2}
+\newcommand{\myname}{Nickolas Arustamyan}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\firstpageheader{\myhwtype\; \myhwnum}{\myname}{MAA 5327}
+\runningheader{}{\myname}{}
+\firstpagefooter{\today}{}{\thepage\,/\,\numpages}
+\runningfooter{}{}{\thepage\,/\,\numpages}
+
+\begin{document}
+\begin{questions}
+\question 1.3.1 \newline
+Since $E$ is a finite set, we can list its contents and say $E = \{x_1, ..., x_n\}$. Then \[E = \bigcup_{i=1}^n {x_i}\]
+But each ${x_i}$ is a singleton and hence closed. Thus $E$ is the finite union of closed sets and is thus closed.
+
+\question 1.3.2 \newline
+Let $E$ be a subset of $X$. If $E$ is the empty set, it is trivially both open and closed. Assume it is non-empty. Then it must contain some element $a \in X$. If we construct a ball with radius $\frac{1}{2}$, we can see that $B_{\frac{1}{2}}(a) \subseteq E$. Thus, since we can construct an open ball around $a$ such that the ball is a subset of $E$ and $a$ was arbitrary, then $E$ is open. Now choose a set $F \subseteq X$ such that $F^c = E$. We know that $F$ must be open. But since it is open, its complement must be closed. Hence, $E$ is also closed.
+\question 1.3.4\newline
+By way of contradiction, assume that $B$ is a closed set such that $E \subseteq B \subseteq \bar{E}$ and $B \neq \bar{E}$. This means that $B$ contains all the elements of $E$ but not all of its limit points. But this means that there is at least one convergent sequence entirely in $B$ whose limit point is not in $B$. But this is a contradiction to the assumption that $B$ is closed. Hence, $B = \bar{E}$. 
+\question 1.3.5\newline
+First, assume $E \subseteq X$ is closed. Then we know that $E^c$ is open. Now assume that $\bar{x}$ is a limit point of $x_n$ but $\bar{x} \not\in E$. This means that $\bar{x} \in E^c$. Since $E^c$ is open, we can find a neighborhood around $\bar{x}$ that is entirely within $E^c$. But this is a contradiction since it would have no other points from $E$ in that neighborhood, contradicting the fact that $\bar{x}$ is a limit point of $x_n$. Thus $\bar{x}$ must be in $E$ and thus, $E$ contains its limit points. Now, to prove the other direction, assume that $E$ contains all of its limit points. We will show that $E^c$ is open. Let $a\in E^c$. Since $a \not\in E$, it can't be a limit point of $E$ by our assumption. So this means we can find a neighborhood around $a$ that contains no points from $E$. This means that the ball is entirely contained within $E^c$ and hence $E^c$ is open. Thus $E$ is closed. 
+\question 1.3.6 \newline
+To show that if each $E_k \subseteq X_k$ is open, $E$ would be open, take an element $x = (x_1, x_2, ..., x_m) \in E$. Then we know that we can find balls $B_k = B(x_k, \varepsilon_k) \subseteq E_k$ for each $k$. Take the minimum radius, $\varepsilon = \min(\{\varepsilon_k\})$ and make a ball $B^* = B((x_1, ..., x_n), \varepsilon)$. Clearly,  $B^* \subseteq E$ since it contains elements from each $B_k$ and hence $B^*$ is in $E$. Thus $E$ is open. \newline
+To show if each $E_k \subseteq X_k$ is closed, then so must $E$ be, we will look at limit points. Since each $E_k$ is closed, they contain all of their limit points. Let $x_n = (x_1^n, x_2^n, ..., x^n_m) \in X$ be a sequence in $E_1 \times E_2 \times ... \times E_m$ that converges to $x = (x_1, x_2, ..., x_m) \in X$. We want to show that $x \in E$. Since the sequence converges, it converges in the product metric. Thus $d(x_n, x) = \sum_{k=1}^{m} d_k(x^n_k, x_k) \rightarrow 0$ as $n\rightarrow \infty$. Since the sum goes to $0$, so must each individual term, since all the terms are positive. Thus, each $x^n_k \rightarrow x_k$. But since $x_k^n \in E_k$ and $E_k$ is closed, we know that $x_k \in E_k$. Thus $x \in E$ and $E$ is closed. 
+\question 1.3.7\newline
+Since $G$ is open in $\mathbb{R}$, we know that for every $x \in G$, we can find an open interval $I \subset G$ such that $x \in I \subset G$. We set $I = (a_x, b_x)$ such that $a_x = \inf\{y \in \mathbb{R} : (y,x] \subset G\}$ and $b_x = \sup\{y \in \mathbb{R} : [x,y) \subset G\}$. The interval $I = (a_x, b_x)$ is by construction the largest open interval that contains $x$. These intervals are disjoint for $x_1, x_2$ parts of different connected components. Clearly, $G$ is covered by the open intervals because each element of $G$ is contained in an intervals. \textbf{NEED TO EXTEND TO $R^N$}
+\question 1.4.6
+\question 1.4.7
+\question 1.4.8
+\question 1.4.10
+\question 1.4.11
+
+\end{questions}
+\end{document}
