@@ -1,0 +1,30 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\newcommand{\myhwtype}{Homework}
+\newcommand{\myhwnum}{3}
+\newcommand{\myname}{Nickolas Arustamyan}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\firstpageheader{\myhwtype\; \myhwnum}{\myname}{MAT 5712}
+\runningheader{}{\myname}{}
+\firstpagefooter{\today}{}{\thepage\,/\,\numpages}
+\runningfooter{}{}{\thepage\,/\,\numpages}
+
+\begin{document}
+\begin{questions}
+\question Question 1\newline
+We know from definition $1.5$ in the lecture notes that if $A_1, A_2, A_3$ are pairwise disjoint, then $P(A_1 \cup A_2 \cup A_3) = P(A_1)+P(A_2)+P(A_3)$. Now, let $A,B \in \mathbb{U}$ . We can split up $A\cup B$ as $A\cup B = (A-B) \cup (A \cap B) \cup (B-A)$. These are clearly pairwise disjoint. Hence \[P(A\cup B) = P((A-B) \cup (A \cap B) \cup (B-A)) = P(A-B) + P(A \cap B) + P(B-A)\] But we know that $P(A-B) = P(A) - P(A \cap B)$ and $P(B-A) = P(B) - P(A \cap B)$. Thus, we end up with \[P(A\cup B) = P(A) - P(A \cap B) + P(B)\]
+\question  Question 2\newline
+We know from definition $1.9$ in the lecture notes that two events are independent if $P(A\cap B) = P(A)P(B)$. Hence, two events are dependent on each other if the equality doesn't hold. Thus, if $A$ and $B$ are exclusive but $P(A) > 0$ and $P(B) > 0$, then $P(A\cap B) = P(\emptyset) = 0$ but $P(A)P(B) > 0$. Thus, they are dependent. 
+\end{questions}
+\end{document}
