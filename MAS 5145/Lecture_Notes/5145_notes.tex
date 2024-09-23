@@ -168,4 +168,71 @@ Let $W_1, W_2$ be subspaces of $V$. Then the following are equivilant
 \dfn{Homomorphisms}{Let $V, W$ be two vector spaces. The set of all linear transformations from $V$ to $W$ is called $Hom(V,W)$ or $L(V, W)$. }
 \mclm{}{$Hom(V, W)$ is a vector space and $dim(Hom(V, W)) = dim(V)\cdot dim(W)$.}
 
+\chapter{Eigen Things}
+\section{09/05/2024}
+\dfn{Eigenvalue}{Let $\alpha \in End(V)$. Then $\lambda$ is an eigenvalue if there exists $v\neq 0$ such that $\alpha(v) = \lambda v$. We call $v$ an eigenvector of $\alpha$. }
+
+\dfn{Spectrum}{We call the set of all eigenvalues of $\alpha$ the spectrum of $\alpha$ and denote it $spec(\alpha)$. }
+
+\dfn{Eigenspace}{We call $E_\lambda(\alpha) = \{v : \alpha(v) = \lambda v\}$ the eignespace of $\alpha$ with respsect to $\lambda$. It is a subspace of $V$. }
+\dfn{Spectral Radius}{The spectral radius of $\alpha$ is $\rho(\alpha) = sup\{|\lambda|: \lambda \in spec(\alpha)\}$.}
+
+\dfn{Charectoristic Polynomial}{Let $\alpha \in End(V)$ and $dim(V) = n$ be finite. Then the charectoristic polynomial of $\alpha$ is defined by $p(t) = det(tI-A)$ where $A$ is a matrix representationof $\alpha$ with respect to a basis $D$. $p(t) = t^n+a_{n-1}t^{n-1} + ... + a_1t+a_0$ and is independent of the choice of basis.}
+\qs{}{Prove that $p(t)$ is independent of the choice of basis}
+\pf{}{If $B$ and $C$ are two representations of $\alpha$ with respect to basis $D, E$ respectivly, then $B = S^{-1}CS$ for some invertible matrix $S$ (the change of basis matrix). Then $det(tI-B) = det(tS^{-1}S-S^{-1}CS) = det(S^{-1}(tI-C)S) = det(tI-C)$}
+
+\qs{}{Prove that if $\lambda \in spec(\alpha)$, then $p_\alpha(\lambda) = 0$. }
+\pf{}{If $\lambda \in spec(\alpha)$, then $(\lambda I - A)\hat{x} = 0$ has a nontrivial solution. Thus $(\lambda I - A)$ is non invertible and hence $det(\lambda I - A) = p_\alpha(\lambda) = 0$. }
+\thm{Spectral Mapping Theorem for Polynomials}{Let $\alpha \in End(V)$ and $p(t)$ be a polynomial. Then $spec(p(\alpha)) = \{p(\lambda) : \lambda \in spec(\alpha)\}$ where $p(\alpha) = \sum a_i\alpha^i = a_0I+a_1\alpha + ... + a_n\alpha^n \in End(V)$. }
+\pf{}{Let $\lambda \in spec(\alpha)$. Then there exists $v \neq 0$ such that $\alpha(v) = \lambda v$. This means that for all $k \in \bbN, \alpha^k(v) = \lambda^kv$. Thus $p(\alpha)(v) = \sum a_i \alpha^i(v) =\sum a_i \lambda^iv  = v\sum a_i \lambda^i = p(\lambda)v$. Since $v\neq 0$, $p(\lambda) \in spec(p(\alpha))$. This proves one direction. To show the other, let $\mu \in spec(p(\alpha))$. Consider $q(t) = p(t)-\mu = a_n(t-\lambda_1)(t-\lambda_2)...(t-\lambda_n)$. This means that $q(\alpha) = p(\alpha) - \mu I$. Since $\mu \in spec(p(\alpha))$, we know that $p(\alpha) -\mu I$ is not invertible. But this means for some $i_0, \alpha-\lambda_{i_0} I$ is not invertible. Thus, $\lambda_{i_0}\in spec(\alpha)$. Since $q(\lambda_{i_0})=0, \mu = p(\lambda_{i_0})$. }
+
+\section{09/10/2024}
+\thm{}{Let $\alpha \in End(V)$ and $p(t) \in P(\mathbb{F})$. Then $p(spec(\alpha)) = \{p(\lambda): \lambda \in spec(\alpha)\} \subseteq spec(p(\alpha))$}
+\qs{}{Let $\alpha_1, ..., \alpha_k \in End(V)$ such that $\alpha_i\cdot \alpha_j = \alpha_j\cdot \alpha_i$ for all $i,j$. Then $\alpha = \prod_j \alpha_j$ is invertible if and only if every $\alpha_i$ is invertible. }
+\mprop{}{Suppose $dim(V) < \infty$ and $\alpha, \beta \in End(V)$. Then $spec(\alpha\beta) = spec(\beta\alpha)$. If $dim(V) = \infty$ then $spec(\alpha\beta) \cup \{0\} = spec(\beta\alpha) \cup \{0\}$}
+
+\thm{Cayley Hamilton Theorem}{Suppose $dim(V) = n < \infty$ and $\alpha \in End(V)$. Then $p(\alpha) = 0$ where $p(t)$ is the charectoristic polynomial of $\alpha$, $p(t) = det(tI - A)$.}
+
+\dfn{Minimal Polynomial}{Let $\alpha \in End(V)$ and $dim(V) = n < \infty$. Then the minimal polynomial, $m(t)$ of $\alpha$ is the monic polynomial of smallest positive degree such that $m(\alpha) = 0$.  }
+
+\mprop{Minimal Polynomial divides the charectoristic polynomial}{Let $m(t)$ be the minimal polynomial of $\alpha$ and $p(t)$ such that $p(\alpha) = 0$. Then $m(t)|p(t)$}
+\pf{}{Clearly, $deg(m) \leq deg(p)$. Doing long division, we see that $p(t) = m(t)g(t)+h(t)$. So this means that $p(\alpha) = h(\alpha)$. But this means that $deg(h) > deg(m)$, which is a contradiction. Thus $h(t) = 0$ and hence, $m | p$. }
+\mprop{}{Let $m(t)$ be the minimal polynomial of $\alpha \in End(V)$. Then $spec(\alpha) = \{\lambda \in \mathbb{F} : m(\lambda) = 0\}$. }
+\pf{}{Recall that $spec(\alpha) = \{\lambda \in \mathbb{F} : p(\lambda) = 0\}$ where $p$ is the charectoristic polynomial of $\alpha$. Since $m|p$, if $m(\lambda) = 0$, then $p(\lambda) = 0$. So this means that $\{\lambda \in \mathbb{F} : m(\lambda) = 0\} \subseteq spec(\alpha)$. Conversly, if $\lambda \in spec(\alpha)$, then by the spectral mapping theorem, $m(\lambda) \in spec(m(\alpha)) = spec(0) = \{0\}$. This means that $m(\lambda) = 0$. Hence $ spec(\alpha) \subseteq  \{\lambda \in \mathbb{F} : m(\lambda) = 0\}$ and so they are equal. }
+
+\cor{}{If $\lambda_1, ..., \lambda_k$ are all the distinct eigenvalues of $\alpha$, then $m(t) = (t-\lambda_1)\cdot (t-\lambda_2) \cdot ... \cdot (t-\lambda_k)h(t)$ for some polynomial $h(t)$. If $dim(V) = k$, then $m(t) = (t-\lambda_1)\cdot (t-\lambda_2) \cdot ... \cdot (t-\lambda_k)$.}
+
+\dfn{}{Let $\alpha \in End(V)$ and $dim(V) = n <\infty$. Then $\alpha$ is diagonalizable if there exists an ordered basis $B = \{v_1, ..., v_k\}$ of $V$ such that $[\alpha]_B$ is diagonal.}
+
+\section{09/12/2024}
+Let $\alpha \in End(V)$
+\begin{enumerate}
+    \item $\alpha$ is diagonalizable if there exists a basis $B$ for $V$ such that $[\alpha]_B$ is diagonal
+    \item $\alpha$ is diagonalizable if and only if $B$ is only eigenvectors
+    \item $\alpha$ is diagnalizable implies that $p(t)$ splits
+    \item $A \in M_{n\times n}(\bbF)$ is diagnalizable if and only if there exists an invertible matrix $S$ such that $S^{-1}AS$ is diagonal
+\end{enumerate}
+
+\mprop{}{Let $\lambda_1, ..., \lambda_k$ be distinct eignvalues of $\alpha$ and $v_1, ..., v_k$ be their corresponding eigenvectors. Then $\{v_1, ..., v_k\}$ is linearly independent}
+\pf{}{\textbf{NEED TO DO}}
+
+\cor{}{Let $\lambda_1, ..., \lambda_k$ be distinct eignvalues of $\alpha$. Then $E_{\lambda_1}+...+E_{\lambda_k}$ is a direct sum}
+\pf{}{Assume that $w_i \in E_{\lambda_i}$ such that $\sum w_i = 0$. Without loss of generality, assume that $w_1, ..., w_L \neq 0$ and $w_{L+1} = ... = w_k = 0$. Then $w_i$ is an eigenvector of $\alpha$ with respect to $\lambda_i$. But $\sum w_i = 0$ which implies that the set $\{w_1, ..., w_L\}$ is linearly dependent. This is a contradiction to the proposition above.}
+
+Let $\alpha \in End(V)$ and $\{\lambda_1, ..., \lambda_k\}$ all distince eigenvalues. Then the following are equivilant:
+\begin{enumerate}
+    \item $\alpha$ is diagonalizable
+    \item $V = \sum E_{\lambda_i}$
+    \item $\sum dim(E_{\lambda_i}) = n = dim(V)$
+\end{enumerate}
+\pf{}{\textbf{NEED TO DO}}
+
+\dfn{Geometric and Algebraic Multiplicity}{Let $\alpha \in End(V)$ and $\lambda \in spec(\alpha)$ and $p(t)$ be the charectoristic polynomial of $\alpha$. Then the algebraic multiplicity of $\lambda$ is the largest $m_\lambda$ such that $p(t) = (t-\lambda)^m_\lambda g(t)$ and the geometric multiplicity  of $\lambda$ is $dim(E_\lambda) = d_\lambda$.}
+
+\mprop{}{$d_\lambda \leq m_\lambda$ for all $\lambda \in spec(\alpha)$. }
+\pf{}{Let $\alpha \in End(V)$ and $\{v_1, ..., v_d\}$ be a basis for $E_\lambda$. Extend it to a basis $B = \{v_1, ..., v_d, v{d+1}, ..., v_n\}$ of $V$. Then $[\alpha]_B = A$ and $p(t) = det(tI-A) = (t-\lambda)^dh(t)$. This implies that $d\leq m$.}
+
+
+
+
 \end{document}
