@@ -233,6 +233,33 @@ Let $\alpha \in End(V)$ and $\{\lambda_1, ..., \lambda_k\}$ all distince eigenva
 \pf{}{Let $\alpha \in End(V)$ and $\{v_1, ..., v_d\}$ be a basis for $E_\lambda$. Extend it to a basis $B = \{v_1, ..., v_d, v{d+1}, ..., v_n\}$ of $V$. Then $[\alpha]_B = A$ and $p(t) = det(tI-A) = (t-\lambda)^dh(t)$. This implies that $d\leq m$.}
 
 
+\thm{}{Let $\alpha \in End(V)$
+\begin{enumerate}
+    \item $\alpha$ is diagnalizable
+    \item $p_\alpha(t)$ splits and $d_\lambda = m_\lambda$ for all $\lambda \in spec(\alpha)$
+\end{enumerate}
+}
+\pf{}{To prove that $(2) \implies (1)$, let $\lambda_1, ..., \lambda_k$ be distinct eigenvalues. Since $p_\alpha$ splits, $p_\alpha(t) = (t-\lambda_1)^{m_{\lambda_1}}\cdot ... \cdot (t-\lambda_k)^{m_{\lambda_k}}$. This implies that $\sum m_{\lambda_i} = \sum d_{\lambda_i} = n$. Thus $\alpha$ is diagnalizable.}
 
+\subsection{Simultaneous Diagonalization}
+\qs{}{Given $\alpha, \beta \in End(V)$, under what conditions is there are a basis $B$ for $V$ such that $[\alpha]_B$ and $[\beta]_B$ are both diagonal? I.E. we need $B = \{v_1, ..., v_n\}$ such that $B$ is a basis for both $\alpha$ and $\beta$.}
+
+\thm{}{Let $\alpha, \beta \in End(V)$ and $dim(V)$ be finite. Suppose $\alpha, \beta$ are diagonalizable. Then they are simultaniously diagonalizable if and only if $\alpha\beta = \beta\alpha$. }
+\pf{}{\textbf{NEED TO DO}}
+
+\mlenma{}{Let $\alpha \in End(V)$ and $V = W_1 \oplus W_2$ such that $W_1, W_2$ are $\alpha$ invariant. If $\alpha$ is diagonalizable, so are $\alpha$ restricted to $W_1$ and $\alpha$ restricted to $W_2$.}
+\pf{}{Suppose $\alpha_1$ is $\alpha$ restricted to $W_1$ is not diagonal. Then there exists a $\lambda \in spec(\alpha_1)$ such that $d_\lambda(\alpha_1) < m_\lambda(\alpha_1)$. But this implies $d_\lambda(\alpha) < m_\lambda(\alpha)$ which is a contradiction. Thus, $\alpha_1$ and $\alpha_2$ are diagonal.
+}
+\mlenma{}{If $\alpha\beta = \beta\alpha$, then $E_\lambda(\alpha)$ is $\beta$ invariant for all $\lambda \in spec(\alpha)$.}
+\pf{}{Let $v\in E_\lambda(\alpha)$. Then $(\alpha\beta)(v) = \alpha(\beta(v)) = \beta(\alpha(v)) = \beta \lambda v = \lambda \beta v$. Thus, $\beta(v) \in E_\lambda(\alpha)$.}
+
+
+\section{09/19/2024}
+\dfn{Cyclic Invariant Subspaces}{Let $\alpha \in End(V), v\in V, W = span\{v, \alpha(v), ..., \alpha^k(v), ...\}$ is a cyclic invariant subspace. $W$ is the smallest $\alpha$ invariant subspace containing $V$. Also $dim(W) = k$ implies that $\{v, \alpha(v), ..., \alpha^{k-1}(v)\}$ is a basis of $W$.}
+
+\mlenma{}{If $p_\alpha$ splits, then there exists a basis $B$ such that $[\alpha]_\beta$ is triangular.}
+\pf{}{\textbf{NEED TO DO}}
+
+\dfn{Nilpotent}{Let $\alpha \in End(V)$. We say $\alpha$ is nilpotent with index $k$ if $\alpha^k = 0$  but $\alpha^{k-1}=0$. In this case, there exists a $w\in V$ such that $dim( span\{v, \alpha(v), ..., \alpha^k(v), ...\})=k$ and there exists an $\alpha$ invariant subspace $U$ such that $V = W \oplus U$.}
 
 \end{document}
