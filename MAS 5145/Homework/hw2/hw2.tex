@@ -1,0 +1,57 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\newcommand{\myhwtype}{Homework}
+\newcommand{\myhwnum}{2}
+\newcommand{\myname}{Nickolas Arustamyan}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\firstpageheader{\myhwtype\; \myhwnum}{\myname}{MAS 5145}
+\runningheader{}{\myname}{}
+\firstpagefooter{\today}{}{\thepage\,/\,\numpages}
+\runningfooter{}{}{\thepage\,/\,\numpages}
+
+\begin{document}
+\begin{questions}
+\question Question 1
+Let $\alpha\beta$ be invertible. Since $dim(V) < \infty$, we know that $\alpha\beta$ is injective and hence, $ker(\alpha\beta) = \{0\}$. For any $v \in ker(\beta)$, we know that $(\alpha\beta)(v) = \alpha(\beta(v)) = \alpha(0) = 0$ since the kernal of $\alpha\beta$ is trivial. But this means that $\beta$ is injective and hence invertible since otherwise, the kernal wouldn't be trivial. Similarly, $\alpha$ is injective and thus invertible. 
+
+\question Question 2\newline
+We can easily apply the dimension formula for subspaces and see that $dim(Im(\alpha) + Im(\beta)) = dim(Im(\alpha))+dim(Im(\beta)) - dim(Im(\alpha)\cap Im(\beta))$ and thus $rank(\alpha+\beta)$
+
+\question Question 3
+\begin{parts}
+\part To show that $\alpha$ is linear, we need to show that $\alpha(f+kg) = \alpha(f)+k\alpha(g)$ for all $f,g \in V$ and $k\in \mathbb{R}$. It is easy to see that $\alpha(f+kg) = \begin{bmatrix}
+    f'(0)+kg'(0) & 2(f(1)+kg(1))\\
+    0 & f''(3)+kg''(3)
+\end{bmatrix}  = \begin{bmatrix}
+    f'(0) & 2f(1)\\
+    0 & f''(3)
+\end{bmatrix} + k\begin{bmatrix}
+    g'(0) & 2g(1)\\
+    0 & g''(3)
+\end{bmatrix} =\alpha(f)+k\alpha(g)$
+And thus it is linear.
+
+\part We need $\alpha(f(x)) = \begin{bmatrix}
+    0 & 0 \\
+    0 & 0
+\end{bmatrix}$. This means that $f'(0) = 0, 2f(1) = 0,$ and $f''(3) = 0$. Since $f \in P_2(\mathbb{R})$, we know that $f = ax^2+bx+c$ for some $a,b,c \in \mathbb{R}$. This means that $f'(x) = 2ax+b$ and $f''(x) = 2a$. Thus, in order to satisfy the last condition, $a = 0$. Hence $b = 0$ to satisfy the first condition. This means that $c=0$ to satisfy the middle one. Thus, $\alpha$ is injective since the kernal is the zero function. Hence $rank(\alpha) = 3$. 
+\part We can write $B_1 = 1E_{11} + 4E_{12}, B_2 = 1E_{11} - 4E_{12}, B_3 = 2E_{11} + 2E_{12} + 2E_{22}$. 
+\end{parts}
+
+\question Question 4 \newline
+It is clear that $spec(\alpha^{-1}\alpha)
+
+
+\end{questions}
+\end{document}

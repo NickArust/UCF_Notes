@@ -1,0 +1,61 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\newcommand{\myhwtype}{Homework}
+\newcommand{\myhwnum}{3}
+\newcommand{\myname}{Nickolas Arustamyan}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\firstpageheader{\myhwtype\; \myhwnum}{\myname}{MAA 5237}
+\runningheader{}{\myname}{}
+\firstpagefooter{\today}{}{\thepage\,/\,\numpages}
+\runningfooter{}{}{\thepage\,/\,\numpages}
+
+\begin{document}
+\begin{questions}
+\question Question 2.1.2
+\begin{parts}
+    \part Let $(X, d_X)$ be discrete and $f: X \rightarrow Y$ be a function from $X$ to $Y$, a metric space. Let $V \subseteq Y$ be open. Then $f^{-1}(V) \subseteq X$ clearly. But we know that all subsets of the discrete space is open. Thus, the preimage of open sets in $Y$ are open in $X$. Hence, the $f$ is continuous.
+    \part Let $f: X \rightarrow Y$ be continuous. Then we know that \textbf{NEED TO FINISH}
+\end{parts}
+\question Question 2.1.3\newline
+Let $f: \mathbb{R}^m \rightarrow \mathbb{R}^l$ be continuous. Then we know that for all $\varepsilon >0$ there exists a $\delta$ such that for $a,b \in \mathbb{R}^m$, if $d(a,b) < \delta$ then $d(f(a), f(b)) < \varepsilon$. Assuming the Euclidean norms for each metric space, then $d(f(a), f(b)) = \sqrt{\sum_{i = 1}^{l} (f_i(a) - f_i(b))^2}$. Since $d(f(a), f(b)) < \varepsilon$ we know that $\sqrt{\sum_{i = 1}^{l} (f_i(a) - f_i(b))^2} < \varepsilon$. But through some algebraic manipulation, we see that $\sqrt{(f_i(a)-f_i(b))^2} < \sqrt{\sum_{i = 1}^{l} (f_i(a) - f_i(b))^2} < \varepsilon$. Thus, for all $a,b$ such that $d(a,b)< \delta$, we get that $d(f_i(a), f_i(b)) < \varepsilon$. Thus, if $f$ is continuous, then so must be the component functions. Now, instead assume that all the $f_i$ are continuous. This means that for all $a,b \in \mathbb{R}^m$, we see that if $d(a,b) < \delta$, we get that $d(f_i(a), f_i(b)) < \varepsilon$ for all $i$. Hence $\sqrt{\sum_{i = 1}^{l} (f_i(a) - f_i(b))^2} < \sqrt{l \cdot \varepsilon}$ and thus function as a whole must be continous. 
+\question Question 2.1.4\newline
+Let $(X, d)$ be a metric space and $\varepsilon > 0$ be given. Now, suppose that $(a,b) \in X \times X$ and $(a', b') \in X \times X$ such that $\max{d(a, a'), d(b, b')} < 0.5\varepsilon = \delta$. Now we can see that $d(d(a,b), d(a',b')) \leq d(d(a,b), d(a',b)) + d(d(a', b), d(a', b')) \leq d(a, a') + d(b, b') \leq \varepsilon$. Thus, the metric is continuous. 
+\question Question 2.1.6 \newline
+\textbf{WHAT IS A DOMAIN???}
+\question Question 2.1.7\newline
+Let $G \subseteq \mathbb{R}^m$ be the topologist sin curve. That is, $G = \{0\} \times [-1,1] \cup \{(x, \sin(\frac{1}{x}): x\in [0, 1])\}$. We know from class that this is a connected set. But let $a = (0,0)$ and $b$ be any other point in $G$. Then there is no continuous function from $a$ to $b$ since we know that the topologist sin curve is not connected. Hence this is a connected but not path connected set. 
+\question Question 2.1.9\newline
+Let $F$ be defined as in the question and let $a\in \mathbb{R}$ be arbitrary. Then there is a specific $\lambda_0$ such that $F(a) - \varepsilon < f_{\lambda_0}(a)$ for any $\varepsilon > 0$ since $F$ is defined as the supremum. Since $f_{\lambda_0}$ is continuous, we know there is a neighborhood $G$ around $a$ such that for all $x \in G$, we get $f_{\lambda_0}(x) - \varepsilon < f_{\lambda_0}(a)$ and thus \[F(a) -\varepsilon< f_{\lambda_0}(a) - \varepsilon < f_{\lambda_0}(a) < F(a)\] and hence $F$ is lower semi-continuous.
+\question Question 2.2.1 \newline
+Since $f$ is continuous, we know that for any $x$ in $X$ and for any $\varepsilon > 0$, there exists a $\delta$ such that $f(a) \in B(x, \varepsilon)$ if $a \in B(x, \delta)$. This means that if we swap the roles of $\varepsilon$ and $\delta$, for the inverse function $f^{-1}: Y \rightarrow X$ we get that $f^{-1}$ is continuous. If $X$ is not compact, we aren't guarenteed that the inverse is continuous. For example, let $X = (0,1)$ and $f = \frac{2x-1}{x-x^2}$. The inverse wouldn't be continuous.
+\question Question 2.2.2\newline
+Since $X$ is compact, it must be complete. This means we can use the Banach fixed point theorem and state that $f$ has a fixed point. Assume that $a,b$ are both fixed points of $f$. This means that $d(f(a) , f(b)) = d(a,b) < d(a,b)$. But this is a contradiction unless $a = b$. Hence, the fixed point is also unique. 
+\question Question 2.2.4
+\begin{parts}
+    \part As $x \rightarrow 0$, it is clear that $sin(\frac{1}{x})$ oscillates rapidly between $-1$ and $1$. Thus, as $x \rightarrow 0$
+\end{parts}
+\question Question 2.2.7
+\question Question 2.2.8
+\question Question 2.2.9
+\question Question 2.2.11
+\question Question 2.2.12
+\question Question 2.2.15
+\question Question 2.2.16
+\question Question 3.1.4
+\question Question 3.1.5
+\question Question 3.1.8
+\question Question 3.1.9
+\question Question 3.1.11
+\end{questions}
+\end{document}

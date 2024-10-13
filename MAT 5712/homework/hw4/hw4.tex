@@ -1,0 +1,34 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\newcommand{\myhwtype}{Homework}
+\newcommand{\myhwnum}{4}
+\newcommand{\myname}{Nickolas Arustamyan}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\firstpageheader{\myhwtype\; \myhwnum}{\myname}{MAT 5712}
+\runningheader{}{\myname}{}
+\firstpagefooter{\today}{}{\thepage\,/\,\numpages}
+\runningfooter{}{}{\thepage\,/\,\numpages}
+
+\begin{document}
+\begin{questions}
+\question Question 1\newline
+For this ODE, we can solve it using Seperation of Variables because it is of the form $\frac{dy}{dt} = f(t)g(y)$ where $f(t) = 1$ and $g(y) = 3y+1$. Applying the formula, we get \[\int \frac{dy}{3y+1} = \int 1 dt\] which integrates to \[\frac{1}{3}ln(3y+1) = t+C_1\]
+Simplifying, we get \[\frac{e^{3t+C_2}-1}{3} =\frac{C*e^{3t}-1}{3} \] where $C_1, C_2, C$ are all constants. 
+\question Question 2\newline 
+This equation can be solving using the characteristic equation. $F(\lambda) = \lambda^2+2\lambda+4=0$. Solving this quadratic, we get \[\lambda = \frac{-2\pm\sqrt{2^2-4*1*4}}{2*1} = \frac{-2\pm 2i\sqrt{3}}{2} = -1\pm i\sqrt{3}\] Since these are complex, the solutions to the ODE are $e^{-1t}(c_1\cos(\sqrt{3}t)+ c_2\sin(\sqrt{3}t))$ where $c_1, c_2 \in \mathbb{R}$.
+\question Question 3\newline
+Applying the same process as above, \[\lambda = \frac{-4\pm\sqrt{4^2-4*1*4}}{2*1} = \frac{-4\pm 0}{2} = -2\] with multiplicity two. Thus, the general solution is $y(t)= c_1e^{-2t}+tc_2e^{-2t}$. But we can use the inital values to figure out what the constants are. $y(0) = c_1e^{-2*0}+0*c_2e^{-2*0} = c_1 = 1$. So $c_1 = 1$.Taking the derivative, we get that $y'(t) = -2e^{-2t}+c_2e^{-2t}-2c_2te^{-2t}$. Thus, $y'(0) = -2e^{-2*0}+c_2e^{-2*0}-2c_2*0*e^{-2*0} = -2+c_2 = 3$ so $c_2 = 5$. Thus, the particular solution is $y(t)= e^{-2t}+t*5e^{-2t}$.
+
+\end{questions}
+\end{document}
