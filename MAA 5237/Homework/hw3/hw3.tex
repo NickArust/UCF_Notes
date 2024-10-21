@@ -25,14 +25,13 @@
 \question Question 2.1.2
 \begin{parts}
     \part Let $(X, d_X)$ be discrete and $f: X \rightarrow Y$ be a function from $X$ to $Y$, a metric space. Let $V \subseteq Y$ be open. Then $f^{-1}(V) \subseteq X$ clearly. But we know that all subsets of the discrete space is open. Thus, the preimage of open sets in $Y$ are open in $X$. Hence, the $f$ is continuous.
-    \part Let $f: X \rightarrow Y$ be continuous. Then we know that \textbf{NEED TO FINISH}
+    \part Assume that $f$ is not constant. Then there are at least two distinct values in the range, say $y_1, y_2$. Since $f$ is continous, we know that $f^{-1}({y})$ is open and so $f^{-1}({y_1})$ and $f^{-1}({y_2})$ must be open and disjoint sets. These sets would partition $X$ which is a contradiction because $X$ is connected but this implies that it is not. Thus, the function must be constant. 
 \end{parts}
 \question Question 2.1.3\newline
 Let $f: \mathbb{R}^m \rightarrow \mathbb{R}^l$ be continuous. Then we know that for all $\varepsilon >0$ there exists a $\delta$ such that for $a,b \in \mathbb{R}^m$, if $d(a,b) < \delta$ then $d(f(a), f(b)) < \varepsilon$. Assuming the Euclidean norms for each metric space, then $d(f(a), f(b)) = \sqrt{\sum_{i = 1}^{l} (f_i(a) - f_i(b))^2}$. Since $d(f(a), f(b)) < \varepsilon$ we know that $\sqrt{\sum_{i = 1}^{l} (f_i(a) - f_i(b))^2} < \varepsilon$. But through some algebraic manipulation, we see that $\sqrt{(f_i(a)-f_i(b))^2} < \sqrt{\sum_{i = 1}^{l} (f_i(a) - f_i(b))^2} < \varepsilon$. Thus, for all $a,b$ such that $d(a,b)< \delta$, we get that $d(f_i(a), f_i(b)) < \varepsilon$. Thus, if $f$ is continuous, then so must be the component functions. Now, instead assume that all the $f_i$ are continuous. This means that for all $a,b \in \mathbb{R}^m$, we see that if $d(a,b) < \delta$, we get that $d(f_i(a), f_i(b)) < \varepsilon$ for all $i$. Hence $\sqrt{\sum_{i = 1}^{l} (f_i(a) - f_i(b))^2} < \sqrt{l \cdot \varepsilon}$ and thus function as a whole must be continous. 
 \question Question 2.1.4\newline
 Let $(X, d)$ be a metric space and $\varepsilon > 0$ be given. Now, suppose that $(a,b) \in X \times X$ and $(a', b') \in X \times X$ such that $\max{d(a, a'), d(b, b')} < 0.5\varepsilon = \delta$. Now we can see that $d(d(a,b), d(a',b')) \leq d(d(a,b), d(a',b)) + d(d(a', b), d(a', b')) \leq d(a, a') + d(b, b') \leq \varepsilon$. Thus, the metric is continuous. 
-\question Question 2.1.6 \newline
-\textbf{WHAT IS A DOMAIN???}
+
 \question Question 2.1.7\newline
 Let $G \subseteq \mathbb{R}^m$ be the topologist sin curve. That is, $G = \{0\} \times [-1,1] \cup \{(x, \sin(\frac{1}{x}): x\in [0, 1])\}$. We know from class that this is a connected set. But let $a = (0,0)$ and $b$ be any other point in $G$. Then there is no continuous function from $a$ to $b$ since we know that the topologist sin curve is not connected. Hence this is a connected but not path connected set. 
 \question Question 2.1.9\newline
@@ -43,19 +42,64 @@ Since $f$ is continuous, we know that for any $x$ in $X$ and for any $\varepsilo
 Since $X$ is compact, it must be complete. This means we can use the Banach fixed point theorem and state that $f$ has a fixed point. Assume that $a,b$ are both fixed points of $f$. This means that $d(f(a) , f(b)) = d(a,b) < d(a,b)$. But this is a contradiction unless $a = b$. Hence, the fixed point is also unique. 
 \question Question 2.2.4
 \begin{parts}
-    \part As $x \rightarrow 0$, it is clear that $sin(\frac{1}{x})$ oscillates rapidly between $-1$ and $1$. Thus, as $x \rightarrow 0$
+    \part Let $u = \frac{1}{x}$. Then we get $\limsup(\sin(u)) = \lim_{n \rightarrow \infty}(\sup_{k > n}(sin(u_k)))$ where $u_k$ is some increasing sequence of input values. But since $\sin(x)$ oscillates between $-1$ and $1$ infinetly often, we know that the supremums will all be $1$ and hence the limit will also be. Thus the limsup is $1$. 
+    \part Let $u = \frac{1}{x}$. Then we get $\liminf(\sin(u)) = \lim_{n \rightarrow \infty}(\inf_{k > n}(sin(u_k)))$ where $u_k$ is some increasing sequence of input values. But since $\sin(x)$ oscillates between $-1$ and $1$ infinetly often, we know that the infimums will all be $-1$ and hence the limit will also be. Thus the liminf is $-1$. 
 \end{parts}
-\question Question 2.2.7
-\question Question 2.2.8
-\question Question 2.2.9
-\question Question 2.2.11
-\question Question 2.2.12
+\question Question 2.2.7\newline
+We know that $f$ is $0$ at all rational values between $a$ and $b$. We must now note that between any two rational numbers, there exists an irrational. This can be seen by noting that for $a,b \in \mathbb{Q}$, $a + \frac{\sqrt{2}(b-a)}{2} \in [a,b]$ and this value is irrational. Now by way of contradiction assume that $f$ is non zero on some irrational $x \in [a,b]$. Say $f(x) = k$. Since $f$ is continuous, there is a $\delta>0$ such that if $y \in B_1 = B(x, \delta)$, then $f(y) \in B_2 = B(f(x), \frac{k}{2})$. But there must be rational $y \in B_1$. This is a contradiction as these values are zero but they would be in $B_2$ and are hence nonzero. Thus, $f$ is zero at all values of $x \in [a,b]$
+\question Question 2.2.8\newline
+It is clear that $\frac{f(x_1)+f(x_2)+...+f(x_n)}{n} \in [f(a), f(b)]$. Since $f$ is continuous, we can apply the Intermediate Value Theorem and state that there is a $\zeta \in [a,b]$ such that $f(\zeta) = \frac{f(x_1)+f(x_2)+...+f(x_n)}{n}$
+\question Question 2.2.9 \newline
+Assume that there is some $x \in [a,b]$ such that $f(x) < 0$. Then we can apply the mean value theorem and state that there must be some point $\zeta \in [a,b]$ such that $f(\zeta) = 0$. But this is a contradiction to the assumption. Thus, $f$ is never negative.
+\question Question 2.2.11 \newline
+Choose $\varepsilon>0$ such that the maximum value of $f([a + \varepsilon, b - \varepsilon])$ is less than all values in $f((a, a+\varepsilon) \cup (b - \varepsilon, b))$. We know this maximum exists and is attained because we can apply the Extreme Value Theorem to the compact set $[a + \varepsilon, b - \varepsilon]$. This also means that there is a minimum value in the set $f([a + \varepsilon, b - \varepsilon])$ and thus the proof is complete.
+\question Question 2.2.12 \newline
+\begin{parts}
+    \part Since $f, g$ are uniformly continous, we know that for all $\varepsilon >0 $, ther exists a $\delta > 0$, for all $x,y$ such that $d(x,y) < \delta$, we get that $d(f(x),f(y)) < \varepsilon$ and the same for $g$. Now examining $f\pm g$, we need to look at $d(f(x)\pm g(x), f(x)\pm g(y))$. I will focus on the sum but the difference comes with very similar logic. It is clear from the triangle inequality that $d(f(x)+g(x), f(y)+g(y)) < d(f(x), g(x)) + d(f(y),g(y)) < \varepsilon + \varepsilon$. Thus, the sum is uniformly continous as well. 
+    \part Looking at the product, we need to examine $d(f(x)\cdot g(x), f(x)\cdot g(y))$. For the purpose of notation, we will assume the Euclidean norm. Thus, we can rewrite $d(f(x)\cdot g(x), f(x)\cdot g(y)) = |f(x)g(x) - f(y)g(y)|$. This can be manipulated to be 
+    \begin{align*}
+        |f(x)g(x) - f(y)g(y)| &= |f(x)g(x)-f(x)g(y)+f(x)g(y)-f(y)g(y)| \\
+        &= |f(x)(g(x)-g(y)) + g(y)(f(x)-f(y))| \\
+        &\leq |f(x)||g(x)-g(y)| + |g(y)||f(x)-f(y)| \\
+        &\leq |f(x)|\varepsilon + |g(y)|\varepsilon
+    \end{align*}
+    Thus, the product will be uniformly continous only if the functions are bounded.  
+\end{parts}
 \question Question 2.2.15
-\question Question 2.2.16
-\question Question 3.1.4
+\begin{parts}
+    \part $f(x) = \sin(\frac{1}{x})$ is not uniformly continous. Assume that it was by way of contradiction. Then for any $\varepsilon >0$, there is a $\delta > 0$ such that if $|x-y| < \delta$, then $|\sin(\frac{1}{x}) - \sin(\frac{1}{y})| < \varepsilon$. Now, choose $\varepsilon = \frac{1}{100}$ and set $y = x + \frac{\delta}{2}$. Then we find that $|\sin(\frac{1}{x}) - \sin(\frac{1}{x + \frac{\delta}{2}})| < \frac{1}{100}$. But for $x$ small enough, this might not be true as $\sin(\frac{1}{x})$ oscillates very quickly between $1$ and $-1$ and hence it is not uniformly continous. 
+    \part $f(x) = \sin(x)$ is uniformly continous. To see this, assume that $x$ and $y$ satisfy $|\sin(x)-\sin(y)| < \varepsilon$. This implies that $|sin(x)-sin(y)| = |2\cos(\frac{x+y}{2})\sin(\frac{x-y}{2})| \leq 2|\sin(\frac{x-y}{2})| < \varepsilon$. Now, if $|x-y| < \delta$, this implies $\frac{|x-y|}{2} < \delta$. Now, since for small $|\sin(x)| \leq |x|$, we know that $2|\sin(\frac{x-y}{2})| \leq 2\delta < \varepsilon$. Thus, if we choose $\delta = \frac{\varepsilon}{2}$ then we get a uniformly continous function. 
+    \part $f(x) = x^2$ is not uniformly continous. Assume that it was by way of contradiction. Then for any $\varepsilon >0$, there is a $\delta > 0$ such that if $|x-y| < \delta$, then $|x^2-y^2| < \varepsilon$. Now, choose $\varepsilon = \frac{1}{100}$ and set $y = x + \frac{\delta}{2}$. Then we find that $|x^2 - (x + \frac{\delta}{2})^2| < \frac{1}{100}$. But for $x$ large enough, this might not be true and hence it is not uniformly continous.
+    
+\end{parts}
+\question Question 2.2.16 \newline
+We will first examine $f$ on the closed interval $[-1,1]$. Since $f$ is uniformly continous, it must be continous and hence we can find $M = \sup_{|x| \leq 1} |f(x)|$. Now, for any $x$ outside of the interval, choose $x_0$ such that $x_0 =-1$ if $x < 0$ and $x_0 = 1$ if $x> 1$. Since $f$ is uniformly continous, we know that there exists a $\delta > 0$ such that if $|x - x_0| < \delta$, then $|f(x) - f(x_0)| < L|x-x_0|$ where $L$ is chosen to be a constant that satisfies that inequality. We know it exists since $f$ is uniformly continous. Now, \[|f(x)| \leq  M + L|x-x_0| \] but $|x-x_0| \leq |x| + 1$ so \[|f(x)| \leq  M + L(|x|+1) \]Thus, choosing $K = L+M$, we get the inequality we seek. 
+\question Question 3.1.4\newline
+First, we must ensure that $f$ is continous at $0$. This means $\lim_{x \rightarrow 0} f(x) = f(0) = 0$. Since $\sin{\frac{1}{|x|}}$ oscillates between $-1$ and $1$, we know that the limit will be dominated by the $|x|^\alpha$ term. By the squeeze theorem, the limit will tend to $0$ as long as $\alpha > 0$. We also need the function to be differentiable at $0$ and hence need the limit $f'(0) = \lim_{x \rightarrow 0} \frac{|x|^\alpha\sin{\frac{1}{|x|^\beta}}}{x} = \lim_{x \rightarrow 0} |x|^{\alpha-1}\sin{\frac{1}{|x|^\beta}}$ to converge. Like before, the sinusoidal term will be dominated by the linear term and hence as long as $\alpha - 1>0$, then the limit tends to $0$ and hence exists. Thus the conditions are that $\beta \in \mathbb{R}$ and $\alpha > 1$. 
 \question Question 3.1.5
-\question Question 3.1.8
-\question Question 3.1.9
-\question Question 3.1.11
+\begin{parts}
+    \part Since $f$ is even $f(-x) = f(x)$. Thus, $f(-x) - f(x) = 0$. Taking the derivative, we get that $-f'(-x) - f'(x)=0 \implies f(-x) = -f(x)$. Thus, the derivative is odd.
+    \part  Since $f$ is odd $f(-x) = -f(x)$. Thus, $f(-x) + f(x) = 0$. Taking the derivative, we get that $-f'(-x) + f'(x)=0 \implies f(-x) = f(x)$. Thus, the derivative is even.
+\end{parts}
+\question Question 3.1.8\newline
+It is clear that $f$ is continous because $\lim_{x \rightarrow 0} f(x) = f(0) = 0$ since the limit is dominated by the quadratic term. To show the derivative exists, we need to show that $f'(0) = \lim_{x \rightarrow 0} \frac{x^2\sin{\frac{1}{x}}}{x} = \lim_{x \rightarrow 0} x\sin{\frac{1}{x}}$ exists. But it is clear that again, the sinusoidal term is dominated by the linear term and hence the limit goes to $0$. Thus the function is differentiable. But we know that  $\lim_{x \rightarrow 0} x\sin{\frac{1}{x}} = 1 \neq f'(0) = 0$. Thus, the derivative isn't continous.  
+\question Question 3.1.9\newline
+\begin{parts}
+    \part To be Gateaux differentiable, the function must have derivatives from every direction. This means that \[D_v(0,0)\lim_{t \rightarrow 0}\frac{f(tv_1, tv_2)-f(0,0)}{t}\] must exist and where $v = (v_1, v_2)$ is a direction vector. Substituting that in, we get $\frac{(tv_1)^p(tv_2)^q}{|tv_1|^n+|tv_2|^m} = \frac{t^{p+q}v_1^pv_2^q}{t^n|v_1|^n+t_m|v_2|^m}$ in the numerator. Thus, we would need $p+q > \max{n,m}$ to ensure that the power on the $t$ is nonnegative and the limit converges. 
+    \part In order for $f$ to have a gradient, we need the partials to exist and be continous. Taking the partials, we get 
+    \begin{align*}
+        \frac{\partial f}{\partial x} &= \frac{p x^{p - 1} y^q}{|y|^m + |x|^n} - \frac{n x^{p + 1} y^q |x|^{n - 2}}{(|y|^m + |x|^n)^2}, \\
+        \frac{\partial f}{\partial y} &= \frac{q x^p y^{q - 1}}{|y|^m + |x|^n} - \frac{m x^p y^{q + 1} |y|^{m - 2}}{(|y|^m + |x|^n)^2}.
+    \end{align*}
+Clearly, in order for the functions to exist as we tend to $0$, we would need $p+1 + n-2 > 0$ or $p+n-1 > 0$ or $p> n+1$. Similarly, we would need $q+1 + m-2 > 0$ or $q+m-1 > 0$ or $q> m+1$.
+\part In order for $f$ to be Frechet differentiable, we need the partials to be continuous. Thus, we need 
+\begin{align*}
+    \frac{\partial f}{\partial x} &= \frac{p x^{p - 1} y^q}{|y|^m + |x|^n} - \frac{n x^{p + 1} y^q |x|^{n - 2}}{(|y|^m + |x|^n)^2}, \\
+    \frac{\partial f}{\partial y} &= \frac{q x^p y^{q - 1}}{|y|^m + |x|^n} - \frac{m x^p y^{q + 1} |y|^{m - 2}}{(|y|^m + |x|^n)^2}.
+    \end{align*}
+    To be continuous.
+\end{parts} 
+\question Question 3.1.11 \newline
+We can apply the Mean Value Theorem and see that there exists a point $c \in [x, x+h]$ such that $f(x+h)-f(x) = f'(c)(x+h - x)$ and similarly there exists a point $d \in [x, x+h]$ such that $g(x+h)-g(x)=g'(d)(x+h-x)$. Thus, $\frac{f(x+h)-f(x)}{g(x+h)-g(x)} = \frac{f'(c)}{g'(d)}$ We know that $\lim_{x\rightarrow \infty}\frac{f'(x)}{g'(x)}$. But, as $x \rightarrow \infty$, we know that $f(x) \rightarrow 0$ and hence $f(x+h) - f(x) \approx f(x+h)$ and $g(x+h) -g(x) \approx g(x+h)$. Thus, $\frac{f(x+h)-f(x)}{g(x+h)-g(x)} \approx \frac{f(x+h)}{g(x+h)} \approx \frac{f'(c)}{g'(d)}$. As $x\rightarrow \infty$, so will $c$ and $d$. Thus, $\frac{f(x+h)}{g(x+h)} \approx \frac{f'(c)}{g'(d)} \rightarrow L$. As $x$ grows, the approximation will go to an equality. Thus, we have proved the statement. 
 \end{questions}
 \end{document}
