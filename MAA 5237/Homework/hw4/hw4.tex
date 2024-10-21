@@ -1,0 +1,70 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\newcommand{\myhwtype}{Homework}
+\newcommand{\myhwnum}{4}
+\newcommand{\myname}{Nickolas Arustamyan}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\firstpageheader{\myhwtype\; \myhwnum}{\myname}{MAA 5237}
+\runningheader{}{\myname}{}
+\firstpagefooter{\today}{}{\thepage\,/\,\numpages}
+\runningfooter{}{}{\thepage\,/\,\numpages}
+
+\begin{document}
+\begin{questions}
+\question 3.2.1 \newline
+In order for \[\frac{|x^\top y|^p}{\|x\|+\|y\|}\] to be differentiable, we would first need it to be continuous at $0$. This means that \[\lim_{(x,y) \rightarrow (0,0)}\frac{|x^\top y|^P}{\|x\|+\|y\|}=0\] We can make the substitution $x = r\cdot u, y = s \cdot v$ where $u,v$ are unit vectors and $r = \|x\|, s = \|y\|$. This means that we get \[\lim_{r,s\to 0}\frac{|ru^{T}\cdot sv|^{P}}{r+s}=\frac{r^{P}s^{P}}{r+s}|u^{T}v|=0\] which is true if $\lim_{r,s \rightarrow 0}\frac{r^{P}s^{P}}{r+s} = 0$. Since we are interested in $(x,y)$ near $(0,0)$, we can let $x = \varepsilon\cdot u, y = \varepsilon \cdot v$ for $\varepsilon$ small. Thus, we get 
+\begin{align*}
+    \lim_{r,s \rightarrow 0}\frac{r^{P}s^{P}}{r+s} &=\lim_{\varepsilon \rightarrow 0}\frac{\varepsilon^{2P}}{2\varepsilon}\\
+     &= \frac{\varepsilon^{2P-1}}{2}
+\end{align*}
+If $p>\frac{1}{2}$, we get that $f(x,y) \to 0$ as $\varepsilon \to 0$. Thus, the function is continuous when $p>\frac{1}{2}$. If $p\leq \frac{1}{2}$, the function doesn't approach $0$ and hence the isn't continuous at $(0,0)$. Thus, we must only analyze the differentiablity of $f(x,y)$ when $p > \frac{1}{2}$.\newline
+First we will consider the partial derivatives. 
+\[\begin{aligned}
+&\text{The partial derivatives at }(0,0)\text{ are:} \\
+&&&\frac{\partial f}{\partial x_i}(0,0)=\lim_{t\to0}\frac{f(te_i,0)-f(0,0)}t=0, \\
+&&&\frac{\partial f}{\partial y_i}(0,0)=\lim_{t\to0}\frac{f(0,te_i)-f(0,0)}t=0. \\
+&\text{So, the gradient }\nabla f(0,0)=0
+\end{aligned}\]
+Clearly, since the partials are continuous, the function is also Frechet differentiable. But we must look closer at the values of $P$. Looking at the limit, we get 
+\[\lim_{(x,y)\to(0,0)}\frac{f(x,y)-f(0,0)-\nabla f(0,0)\cdot(x,y)}{\|(x,y)\|}=0\] This simplifies to \[\lim_{(x,y)\to(0,0)}\frac{f(x,y)}{\|(x,y)\|}=0\] Using the substitution we did above, we get \[\frac{f(h,k)}{\|(h,k)\|}=\frac{\epsilon^{2p-1}}{2\sqrt{2}\epsilon}|u^\top v|^p=\frac{\epsilon^{2p-2}}{2\sqrt{2}}|u^\top v|^p\] Hence, for $p > 1$, we see that $2p-2>0$ and thus the limit is $0$. Thus, the function is differentiable. If $p =1$, we get $2p-2=0$ so the limit won't be $0$ and hence the function won't be differentiable. So it is only Frechet differentiable if $p > 1$. 
+\question 3.2.2\newline
+Let $f$ be Lipschitz and $f(x_0) = 0$. Now let $g(x) = (f(x))^2$. Consider the limit \[\lim_{x \to x_0} \frac{\|g(x)-g(x_0)- g'(x_0)(x-x_0)\|}{\|x-x_0\|}\] This can be simplified to \[\lim_{x \to x_0} \frac{\|g(x)- g'(x_0)(x-x_0)\|}{\|x-x_0\|}\] Now, looking at the derivative of $g$, we see that $\nabla g(x) = 2\cdot f(x) \cdot \nabla f(x)$ and hence $\nabla g(x_0) =  2\cdot f(x_0) \cdot \nabla f(x_0) = 0$. Thus, we are just left with \[\lim_{x \to x_0} \frac{\|(f(x))^2\|}{\|x-x_0\|}\] We can rewrite this as 
+\[
+    \lim_{x \to x_0} \frac{\|(f(x))^2\|}{\|x-x_0\|} = \lim_{h \to 0} \frac{\|(f(x_0+h))^2\|}{\|h\|}
+\]
+By the Lipschitz condition, we get that $|f(x_0+h)-f(x_0)| =|f(x_0+h)| \leq L\|h\|$. Thus, $f(x_0+h)^2 \leq L^2\|h\|^2$. Hence, the limit simplifies to 
+\begin{align*}
+    \lim_{h \to 0} \frac{\|(f(x_0+h))^2\|}{\|h\|} &\leq \lim_{h \to 0} \frac{L^2\|h\|^2}{\|h\|}\\
+    &=\lim_{h \to 0} L^2\|h\|\\
+    &= 0
+\end{align*}
+Thus, the function is Frechet differentiable. 
+\question 3.2.3 \newline
+Define $g(\lambda) = f(\lambda x + (1-\lambda)y)$. Thus, $g(1) = f(x)$ and $g(0) = f(y)$. We can compute $g'(c)$ and get $\nabla f(x)(y-x)$. Now, since $f$ is convex, so is $g$. This means we can use the tangent line inequality because $g$ is convex and see that $g(1) \geq g(0) + g'(0)(1-0)$. The tangent line approximation of $f(y)$ at $x$ is $T = f(x)+\nabla f(x)(y-x)$. But we know that $f$ is convex so that means the function is above its tangent lines. This means that $f(y) \geq f(x) + \nabla f(x) (y-x)$
+\question 3.2.4 \newline
+Simple computation shows that $\nabla f(0,0) = (1,0)^T$ since $f_x(0,0) = 1, f_y(0,0)=0$. Thus, the linear map would be just $f'(0,0)((x,y)-(0,0)) = x$. To evaluate Frechet differentiablity, we need to check the limit \[\lim_{(x,y)\to(0,0)}\frac{f(x,y)-f(0,0)-x}{\sqrt{x^2+y^2}}\] But we can simplify this to be $x\left(\frac{\sin(y)}{y}-1\right)$ when $y \neq 0$. But we can approximate $\frac{\sin(y)}{y}-1$ by $\frac{y^2}{6}$ using the taylor expansion. Thus, we approximate $x\left(\frac{\sin(y)}{y}-1\right)$ by $\frac{xy^2}{6}$. Hence, the expression we take the limit of becomes \[\frac{\|xy^2\|}{6\sqrt{x^2+y^2}}\] Taking the limit as $(x,y) \to (0,0)$, we get $0$ regardless of the path. Hence, the function is Frechet differentiable. 
+\question 3.3.1
+\question 3.3.2
+\question 3.3.3
+\question 3.4.1
+\question 3.4.2
+\question 3.4.3
+\question 3.4.4
+\question 3.4.6
+\question 3.4.7
+\question 3.4.9
+\question 3.4.10
+
+\end{questions}
+\end{document}
