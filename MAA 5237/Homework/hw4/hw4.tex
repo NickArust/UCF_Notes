@@ -54,21 +54,33 @@ Thus, the function is Frechet differentiable.
 Define $g(\lambda) = f(\lambda x + (1-\lambda)y)$. Thus, $g(1) = f(x)$ and $g(0) = f(y)$. We can compute $g'(c)$ and get $\nabla f(x)(y-x)$. Now, since $f$ is convex, so is $g$. This means we can use the tangent line inequality because $g$ is convex and see that $g(1) \geq g(0) + g'(0)(1-0)$. The tangent line approximation of $f(y)$ at $x$ is $T = f(x)+\nabla f(x)(y-x)$. But we know that $f$ is convex so that means the function is above its tangent lines. This means that $f(y) \geq f(x) + \nabla f(x) (y-x)$
 \question 3.2.4 \newline
 Simple computation shows that $\nabla f(0,0) = (1,0)^T$ since $f_x(0,0) = 1, f_y(0,0)=0$. Thus, the linear map would be just $f'(0,0)((x,y)-(0,0)) = x$. To evaluate Frechet differentiablity, we need to check the limit \[\lim_{(x,y)\to(0,0)}\frac{f(x,y)-f(0,0)-x}{\sqrt{x^2+y^2}}\] But we can simplify this to be $x\left(\frac{\sin(y)}{y}-1\right)$ when $y \neq 0$. But we can approximate $\frac{\sin(y)}{y}-1$ by $\frac{y^2}{6}$ using the taylor expansion. Thus, we approximate $x\left(\frac{\sin(y)}{y}-1\right)$ by $\frac{xy^2}{6}$. Hence, the expression we take the limit of becomes \[\frac{\|xy^2\|}{6\sqrt{x^2+y^2}}\] Taking the limit as $(x,y) \to (0,0)$, we get $0$ regardless of the path. Hence, the function is Frechet differentiable. 
-\question 3.3.1
+\question 3.3.1\newline
+This is a direct application of the Inverse Function Theorem. Since $f$ is $C^1$ and has invertible derivative matrix on any $x$, we know that $f$ has invertible derivative matrix on any open $G \subseteq \mathbb{R}^m$. Thus, by the Inverse function theorem, we know that $f(G)$ is open.
 \question 3.3.2
-\question 3.3.3
-\question 3.4.1
-\question 3.4.2
-\question 3.4.3
-\question 3.4.4
+\question 3.3.3 \newline
+Since $\phi_x(\bar{x}) \neq 0$, there is $k \in \{1,...,m\}$ such that $\frac{\partial f}{\partial x_k} \neq 0$. We now apply the implict function theorem and state that there is a neighborhood $U$ of $\bar{x} \subseteq \mathbb{R}^m$ and a neighborhood $V$ of $(\bar{x}_1,..., \bar{x}_{k-1}, \bar{x}_{k+1}, ..., \bar{x}_m) \subseteq \mathbb{R}^{m-1}$ and a unique function $C^1$ function $\theta$ such that \[\phi(x_1, ..., x_{k-1}, \theta(x_1,...,x_{k-1},x_{k+1},...,x_m),x_{k+1},...,x_m) = 0\] To find $\delta$ and $\Gamma$, we choose $\delta>0$ be small enough such that $B(0, \delta) + \bar{x} \subseteq U$ and define $\Gamma = \{(x_1,...,x_{k-1},x_{k+1},...,x_m ): (x_1,...,x_{k-1},x_{k+1},...,x_m) \in B(0, \delta) + \bar{x} \}$. The geometric interpratation would be that near any boundary point of $G$, the boundary can be locally represented as the $m-1$ dimensional surface in $\mathbb{R}^m$ and that locally, that surface behaves like $\theta$, which is smooth. So locally the boundary is smooth.  
+\question 3.4.1 
+\question 3.4.2 \newline
+Let the Hessian of $f$ be positive semi definate. This means that $v^Tf_{xx}(x)v \geq 0$ for all $v\in \mathbb{R}^M$. We take the taylor expansion of $f$ around $x$. For any $y\in \mathbb{R}^M$, we exapnd $f(y)$ around $x$ as \[
+f(y)=f(x)+\nabla f(x)^T(y-x)+\frac12(y-x)^Tf_{xx}(x)(y-x)+o(\|y-x\|^2)\]
+Since $f_{xx}(x)$ is positive semi definate, we know that $(y-x)^Tf_{xx}(x)(y-x) \geq 0$ and hence we get \[f(y)\geq f(x)+\nabla f(x)^T(y-x)\] But we know that this implies that $f$ is convex. 
+\question 3.4.3\newline
+Define $g(t) = f(t)-yt$ for $y \in [f'(a), f'(b)]$. Since $f$ is differentiable, then so is $g$ and $g'(t) = f'(t)-y$. We can apply the mean value theorem and state that there is a $c\in [a,b]$ such that $\frac{f(b)-yb-(f(a)-ya)}{b-a} = g'(c)$. We can simplify that ratio to get \[\frac{f(b)-f(a)-y(b-a)}{b-a} = \frac{f(b)-f(a)}{b-a}-y\]
+This implies that $g'(c) = \frac{f(b)-f(a)}{b-a}-y = f'(c)-y$ and hence $f'(c) = \frac{f(b)-f(a)}{b-a}$. Thus, $f'(x)$ takes values between $f'(a)$ and $f'(b)$. Thus, by the intermediate value property, we can say that there is a $c_1$ such that $f'(c_1) = y$ 
+\question 3.4.4\newline
+First, we take the limit as $x\to y$ and see that $\lim_{x\to y}|f(x)-f(y)|\leq\lim_{x\to y}K|x-y|^\alpha=0$. This means that $f(y)=\lim_{x\to y}f(x)$ and hence $f$ is continuous. Now, fix $y=0$. Then we get $\|f(x)-f()\|\leq K\|x-0\|^\alpha=K\|x\|^\alpha$. Since this must be true for all $x$, we know that we can make the right arbitrarily small by choosing a small $x$. Thus, the only way this is going to be true is if $f(x)=f(0)$. 
 \question 3.4.6
 \begin{parts}
-\part Let $n$ be even. Then we know that $n-1$ is odd. Let $f(x) = x^n + ax + b$. Then $f'(x) = nx^{n-1}+a$ and $f'$ is strictly increasing. Thus,      
+\part First note that $f$ is a polynomial and hence differentiable. Let $n$ be even. Then we know that $n-1$ is odd. Let $f(x) = x^n + ax + b$. Then $f'(x) = nx^{n-1}+a$ and since $x^{n-1}$ is odd, the derivative will change sign as most once and thus, we know that $f$ has at most one local extrema. Thus, it can only cross the $x$ axis twice at most since the $x^n$ term will dominate for large $x$ and the function will be far from $0$. Hence, the function can only have at most two real zeros. 
+\part First note that $f$ is a polynomial and hence differentiable. By the fundamental theorem of algebra, we know that $f$ has $n$ roots. Since complex roots come in pairs, we know that there must be at least one real root. Call that root $c$. We can divide $f$ by $(x-c)$ and get a new polynomial of degree $n-1$. Let $m=n-1$. Then $m$ is even since $n$ is even. Thus we get a polymial of the form $x^m+a$. Using the result from part $1$, we know that this polynomial can have at most $2$ real roots. Thus, $f$ has at most $3$ real roots. 
 \end{parts}
 \question 3.4.7\newline
-Fix an $n \in \mathbb{N}$. We know that $a_0+\frac{a_1}2+\cdots+\frac{a_{n-1}}n+\frac{a_n}{n+1}=0$
-\question 3.4.9
-\question 3.4.10
+Fix an $n \in \mathbb{N}$. Define $f(x) = a_0x+\frac{a_1}2x^2+\cdots+\frac{a_{n-1}}nx^{n}+\frac{a_n}{n+1}x^{n+1}$. It is clear that $f(0) = 0$ and $f(1) =  a_0+\frac{a_1}2+\cdots+\frac{a_{n-1}}n+\frac{a_n}{n+1} = 0$ as given in the problem. So $f(0) = f(1) = 0$. Since $f$ is a polynomial, it is continuous and differentiable over $\mathbb{R}$. Thus, we can apply Rolle's Theorem and state that there is a point $c \in (0,1)$ such that $f'(c) = 0$. But $f'(x) = a_0+a_1x+\cdots+a_{n-1}x^{n-1}+a_nx^{n}$. Hence we know that $a_0+a_1x+\cdots+a_{n-1}x^{n-1}+a_nx^{n}=0$ has a solution in $(0,1)$. 
+\question 3.4.9\newline
+Using the taylor theorem, we can expand $f(x+2h)$ around $x$ and get $f(x+2h)=f(x)+f'(x)\cdot 2h+h^2f''(\eta)$ for some $\eta \in (x,x+2h)$. Now we subtract $f(x)$ from both sides and divide by $2h$ and get $\frac{f(x+2h)-f(x)}{2h}=f'(x)+\frac{h}{2}f''(\eta)$. Thus, we get \[f'(x)=\frac{f(x+2h)-f(x)}{2h}-hf''(\eta)\] Now, to handle the Supremum identity, we first bound the difference and see that \[\left|\frac{f(x+2h)-f(x)}{2h} \right|\leq \frac{2\sup_{x\in[a,b]}\|f(x)\|}{2h} = \frac{\sup_{x\in[a,b]}\|f(x)\|}{h}\] and we know that the supremum is well defined and finite since $f$ is continuous. Similarly, we bound the second derivative term and see that \[\|hf''(\eta)\| \leq h\sup_{x\in[a,b]}f''(x)\] Now, we can combine the bounds and see that \[\|f'(x)\|\leq \frac{\sup_{x\in[a,b]}\|f(x)\|}{h}+h\sup_{x\in[a,b]}f''(x)\] We can now better select the $h$ such that the two terms are balanced. Thus, we need $h\sup_{x\in[a,b]}f''(x)=\frac{\sup_{x\in[a,b]}\|f(x)\|}{h}$. Now, we can solve for $h$ and get \[h = \sqrt{\frac{\sup_{x\in[a,b]}\|f(x)\|}{\sup_{x\in[a,b]}f''(x)}}\] Substituting that back in, we get 
+\[\|f'(x)\| \leq 2\sqrt{\sup_{x\in[a,b]}f''(x)\cdot \sup_{x\in[a,b]}\|f(x)\|}\] Squaring both sides to remove the square root and taking the supremum, we get \[\sup_{x\in[a,b]}\|f'(x)\|^2 \leq 4\sup_{x\in[a,b]}f''(x)\cdot \sup_{x\in[a,b]}\|f(x)\|\]
+\question 3.4.10 \newline
+Since $f(0)=0$, so will be all its derivatives. That is, $f^n(0)=0$ for all $n$ where $f^i$ denotes the $i^{th}$ derivative. Thus, the taylor expansion of $f$ at $x=0$ would be $0$. But clearly, $f$ is not equal to $0$ everywhere. Thus, the function is not equal to it's taylor expansion at $0$. So even though it is smooth, it is not equal to its taylor expansion and thus we know that simply being smooth is not enough to be equal to its taylor expansion. 
 
 \end{questions}
 \end{document}
