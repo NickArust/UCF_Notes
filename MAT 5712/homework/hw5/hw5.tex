@@ -1,0 +1,43 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\newcommand{\myhwtype}{Homework}
+\newcommand{\myhwnum}{5}
+\newcommand{\myname}{Nickolas Arustamyan}
+
+\pagestyle{headandfoot}
+\firstpageheadrule
+\runningheadrule
+\firstpageheader{\myhwtype\; \myhwnum}{\myname}{MAT 5712}
+\runningheader{}{\myname}{}
+\firstpagefooter{\today}{}{\thepage\,/\,\numpages}
+\runningfooter{}{}{\thepage\,/\,\numpages}
+
+\begin{document}
+\begin{questions}
+\question Question 1 \newline
+The second order Legendre Polynomials are given by $P_2(x) = \frac{1}{2}(3x^2-1)$. The nodes are the $x$ such that $P_2(x) = \frac{1}{2}(3x^2-1) =0$. Solving for $x$, we get $x_{1,2} = \pm \frac{1}{\sqrt{3}}$. Since these nodes are found for the interval $[-1,1]$ but we need them for $[-2,0]$, we need to transform them to find the new nodes. They would be $x' = \frac{0-(-2)}{2}x+\frac{0+(-2)}{2}$. This would result in $x'_1 = -1-\frac{1}{\sqrt{3}}$ and $x'_2 = -1+\frac{1}{\sqrt{3}}$. The weights would be $w_1=w_2=1$ on $[-1,1]$. On $[-2,0]$, these would still be $w'_1 = w'_2=1$. The integral can now be approximated as $I = w'_1f(x'_1)+w'_2f(x'_2)$. Thus we get 
+\begin{align*}
+    I &= w'_1f(x'_1)+w'_2f(x'_2)\\
+    &= 1*e^{-(-1-\frac{1}{\sqrt{3}})}+1*e^{-(-1+\frac{1}{\sqrt{3}})}\\
+    &= e^{1+\frac{1}{\sqrt{3}}}+e^{1-\frac{1}{\sqrt{3}}}\\
+\end{align*}
+\question Question 2\newline
+The corresponding RK Scheme would be \[\xi_1 = y_n + \frac{1}{2}hf(t_n+\frac{1}{2}h, \xi_1) \]
+\[y_{n+1} = y_n + hf(t_n+\frac{1}{2}h, \xi_1)\]
+To find the relationship between the two, we can multiply $\xi_1$ by $2$ and then subtract from $y_{n+1}$. This gives us 
+\begin{align*}
+    2\xi_1-y_{n+1} &= 2y_n+hf(t_n+\frac{1}{2}h,\xi_1)-y_n+hf(t_n+\frac{1}{2}h,\xi_1)\\
+    &=y_n\\
+\end{align*}
+This implies $2\xi_1 = y_n+y_{n+1}$ or that $\xi_1=\frac{1}{2}(y_n+y_{n+1})$. This means that \[y_{n+1} = y_n + hf(t_n+\frac{1}{2}h, \xi_1) = y_{n+1} = y_n + hf(t_n+\frac{1}{2}h,\frac{1}{2}(y_n+y_{n+1}) )\] as intended. Thus, this gives us the same information as we had originally. 
+
+\end{questions}
+\end{document}
